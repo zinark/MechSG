@@ -27,3 +27,11 @@ TEST (Dice, RollSome5Result)
     for (int i=0; i<5; i++)
         dice.Roll();
 }
+
+TEST (Dice, CanInjectRangeAfterInstantiaton)
+{
+    Dice dice;
+    dice.Ranged (Range(1,2));
+    EXPECT_LE (1, dice.Roll());
+    EXPECT_GE (2, dice.Roll());
+}

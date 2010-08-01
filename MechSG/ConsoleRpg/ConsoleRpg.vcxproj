@@ -71,6 +71,8 @@
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterTests.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerTests.cpp" />
     <ClCompile Include="Range.cpp" />
     <ClCompile Include="RPGProgram.cpp" />
     <ClCompile Include="Statistics.cpp" />
@@ -81,6 +83,7 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Range.h" />
     <ClInclude Include="RPGProgram.h" />
     <ClInclude Include="Statistics.h" />

@@ -2,6 +2,7 @@
 #include <string>
 #include "Statistics.h"
 #include "Weapon.h"
+#include "Player.h"
 using namespace std;
 
 namespace CRPG
@@ -18,13 +19,18 @@ namespace CRPG
         Monster(const string& name, int xpReward);
         Monster ();
         ~Monster(void);
-        Monster& Statisticed (const Statistics& statistics);
+
+        Monster& WithStat (const Statistics& statistics);
         Monster& Weaponed (const Weapon& weapon);
 
         int XpReward () const { return _XpReward; }
         string& Name () { return _Name; }
         Statistics& Statistics () { return _Statistics;}
         Weapon& EquippedWeapon () { return _Weapon; }
+
+        void TakeDamage (int damagePoint);
+        void Attack (Player& player);
+        bool IsDie () { return _Statistics.HitPoint() <= 0; }
     };
 
 

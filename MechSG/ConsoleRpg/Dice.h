@@ -10,7 +10,9 @@ namespace CRPG
     
     public:
         Dice(Range& range);
+        Dice (void);
         ~Dice(void);
+        Dice& Ranged (Range& range);
         int Roll ();
     };
 
