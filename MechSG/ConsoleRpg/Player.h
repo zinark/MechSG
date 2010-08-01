@@ -19,6 +19,7 @@ namespace CRPG
 
         Statistics& Statistics () { return _Statistics; }
         string& Name () { return _Name;}
+        void TakeDamage (int value);
 
         Player& WithStat (const CRPG::Statistics& stat);
     };

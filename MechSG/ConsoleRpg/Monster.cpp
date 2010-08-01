@@ -35,7 +35,7 @@ Monster& CRPG::Monster::Weaponed( const Weapon& weapon )
 
 void CRPG::Monster::TakeDamage( int damagePoint )
 {
-    _Statistics.HitPoint(_Statistics.HitPoint() - damagePoint);
+    _Statistics.SetHitPoint(_Statistics.HitPoint() - damagePoint);
 }
 
 void CRPG::Monster::Attack( Player& player )
@@ -46,6 +46,25 @@ void CRPG::Monster::Attack( Player& player )
     if (_Statistics.Accuracy() > hitRoll)
     {
         int damageRoll = damageDice.Roll();
+        int damage = damageRoll - player.Statistics().Armor();
+        if (damage < 0) damage = 0;
+        player.TakeDamage(damage);
     }
+}
+
+bool CRPG::Monster::Attack( Player& player, int& hitRoll, int& damageRoll )
+{
+    Dice hitDice (Range(1,20));
+    Dice damageDice (_Weapon.DamageRange());
+    hitRoll = hitDice.Roll();
+    if (_Statistics.Accuracy() > hitRoll)
+    {
+        damageRoll = damageDice.Roll();
+        int damage = damageRoll - player.Statistics().Armor();
+        if (damage < 0) damage = 0;
+        player.TakeDamage(damage);
+        return true;
+    }
+    return false;
 }
 

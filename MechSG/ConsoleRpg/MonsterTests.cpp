@@ -12,7 +12,7 @@ TEST (Monster, ConstructionOfAMonster)
 {
     int xpReward = 100;
     Monster monster = Monster ("Orc", xpReward)
-        .WithStat (Statistics().HitPoint (10).Accuracy (5).Armor (10))
+        .WithStat (Statistics().SetHitPoint (10).SetAccuracy (5).SetArmor (10))
         .Weaponed (Weapon ("Sword", Range(1,6)));
 
     EXPECT_EQ (100, monster.XpReward ());
@@ -31,7 +31,7 @@ TEST (Monster, ReferenceAddressesShouldBeTheSameOnFluenting)
 
 TEST (Monster, CanTakeDamage)
 {
-    Monster m = Monster ("foo", 100).WithStat (Statistics().HitPoint(50));
+    Monster m = Monster ("foo", 100).WithStat (Statistics().SetHitPoint(50));
     m.TakeDamage (50);
 
     EXPECT_EQ (0, m.Statistics ().HitPoint ());
@@ -39,7 +39,7 @@ TEST (Monster, CanTakeDamage)
 
 TEST (Monster, CanDie)
 {
-    Monster m = Monster ("m", 100).WithStat(Statistics().HitPoint(5));
+    Monster m = Monster ("m", 100).WithStat(Statistics().SetHitPoint(5));
     EXPECT_EQ (false, m.IsDie ());
     m.TakeDamage(5);
     EXPECT_EQ (true, m.IsDie());
@@ -49,7 +49,9 @@ TEST (Monster, CanAttack)
 {
     Monster m = Monster ("m", 50)
         .Weaponed(Weapon("Sword", Range(1,6)))
-        .WithStat(Statistics().HitPoint(5).Accuracy(12).Armor(5));
-    Player player = Player ("P1").WithStat(Statistics().HitPoint(10).Armor(5).Accuracy(10));
-    m.Attack (player);
+        .WithStat(Statistics().SetHitPoint(5).SetAccuracy(12).SetArmor(5));
+    Player p1 = Player ("P1").WithStat(Statistics().SetHitPoint(10).SetArmor(5).SetAccuracy(10));
+    int hitRoll = 0;
+    int damageRoll = 0;
+    bool result = m.Attack (p1, hitRoll, damageRoll);
 }

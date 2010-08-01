@@ -21,3 +21,8 @@ CRPG::Player& CRPG::Player::WithStat( const CRPG::Statistics& stat )
     _Statistics = stat;
     return *this;
 }
+
+void CRPG::Player::TakeDamage( int value )
+{
+    _Statistics.SetHitPoint(_Statistics.HitPoint() - value);
+}

@@ -11,9 +11,9 @@ namespace CRPG
     public:
         Statistics(void);
         ~Statistics(void);
-        Statistics& HitPoint (int value);
-        Statistics& Accuracy (int value);
-        Statistics& Armor (int value);
+        Statistics& SetHitPoint (int value);
+        Statistics& SetAccuracy (int value);
+        Statistics& SetArmor (int value);
 
         int HitPoint () const { return _HitPoint; }
         int Accuracy() const { return _Accuracy; }

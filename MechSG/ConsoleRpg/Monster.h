@@ -30,6 +30,7 @@ namespace CRPG
 
         void TakeDamage (int damagePoint);
         void Attack (Player& player);
+        bool Attack (Player& player, int& hitRoll, int& damageRoll);
         bool IsDie () { return _Statistics.HitPoint() <= 0; }
     };
 
