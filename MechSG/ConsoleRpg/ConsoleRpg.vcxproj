@@ -69,14 +69,22 @@
     <ClCompile Include="DiceTests.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterTests.cpp" />
     <ClCompile Include="Range.cpp" />
     <ClCompile Include="RPGProgram.cpp" />
+    <ClCompile Include="Statistics.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WeaponTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="Range.h" />
     <ClInclude Include="RPGProgram.h" />
+    <ClInclude Include="Statistics.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
