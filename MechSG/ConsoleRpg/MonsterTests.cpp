@@ -63,20 +63,13 @@ TEST (Monster, Attack_HitAndDamageRolls)
     int hitRoll = 0;
     int damageRoll = 0;
     bool result = m.Attack (p1, hitRoll, damageRoll);
-
-    int expectedPlayerHitPoint = p1.Statistics ().HitPoint () - damageRoll;
-    EXPECT_EQ (expectedPlayerHitPoint, p1.Statistics().HitPoint());
-    
+    cout << "HIT ROLL " << hitRoll << endl;
+    cout << "DAMAGE ROLL " << damageRoll << endl;
+    cout << "PLAYER HP " << p1.GetStatistics().HitPoint () << endl;
+        
     EXPECT_GE (20, hitRoll);
     EXPECT_LE (1, hitRoll);
 
     EXPECT_GE (6, damageRoll);
     EXPECT_LE (0, damageRoll);
 }
-
-TEST (Monster, Attack_ToPlayer_CalculatingDamage)
-{
-
-}
-
-

@@ -22,5 +22,8 @@ TEST (Creation, MonsterFactory_MonsterCreation)
 
 TEST (Creation, PlayerFactory)
 {
-    EXPECT_EQ ("HUMAN", PlayerFactory::Instance().Create ("human").Name());
+    EXPECT_EQ ("FIGHTER", PlayerFactory::Instance().Create ("fighter").Name());
+    EXPECT_EQ ("WIZARD", PlayerFactory::Instance().Create ("wizard").Name());
+    EXPECT_EQ ("CLERIC", PlayerFactory::Instance().Create ("cleric").Name());
+    EXPECT_EQ ("THIEF", PlayerFactory::Instance().Create ("thief").Name());
 }

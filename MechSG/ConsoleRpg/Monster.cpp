@@ -4,18 +4,18 @@
 using namespace std;
 using namespace CRPG;
 
-CRPG::Monster::Monster( const string& name, int xpReward )
+Monster::Monster( const string& name, int xpReward )
 {
     _Name = name;
     _XpReward = xpReward;
 }
 
-CRPG::Monster::Monster()
+Monster::Monster()
 {
     Monster ("", 0);
 }
 
-CRPG::Monster::~Monster( void )
+Monster::~Monster( void )
 {
 
 }
@@ -46,7 +46,7 @@ void Monster::Attack( Player& player )
     if (_Statistics.Accuracy() > hitRoll)
     {
         int damageRoll = damageDice.Roll();
-        int damage = damageRoll - player.Statistics().Armor();
+        int damage = damageRoll - player.GetStatistics().Armor();
         if (damage < 0) damage = 0;
         player.TakeDamage(damage);
     }
@@ -60,7 +60,7 @@ bool Monster::Attack( Player& player, int& hitRoll, int& damageRoll )
     if (_Statistics.Accuracy() > hitRoll)
     {
         damageRoll = damageDice.Roll();
-        int damage = damageRoll - player.Statistics().Armor();
+        int damage = damageRoll - player.GetStatistics().Armor();
         if (damage < 0) damage = 0;
         player.TakeDamage(damage);
         return true;
