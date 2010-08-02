@@ -21,24 +21,24 @@ CRPG::Monster::~Monster( void )
 }
 
 
-Monster& CRPG::Monster::WithStat( const CRPG::Statistics& statistics )
+Monster& Monster::WithStat( const CRPG::Statistics& statistics )
 {
     _Statistics = statistics;
     return *this;
 }
 
-Monster& CRPG::Monster::Weaponed( const Weapon& weapon )
+Monster& Monster::Weaponed( const Weapon& weapon )
 {
     _Weapon = weapon;
     return *this;
 }
 
-void CRPG::Monster::TakeDamage( int damagePoint )
+void Monster::TakeDamage( int damagePoint )
 {
     _Statistics.SetHitPoint(_Statistics.HitPoint() - damagePoint);
 }
 
-void CRPG::Monster::Attack( Player& player )
+void Monster::Attack( Player& player )
 {
     Dice hitDice (Range(1,20));
     Dice damageDice (_Weapon.DamageRange());
@@ -52,7 +52,7 @@ void CRPG::Monster::Attack( Player& player )
     }
 }
 
-bool CRPG::Monster::Attack( Player& player, int& hitRoll, int& damageRoll )
+bool Monster::Attack( Player& player, int& hitRoll, int& damageRoll )
 {
     Dice hitDice (Range(1,20));
     Dice damageDice (_Weapon.DamageRange());

@@ -4,9 +4,12 @@
 #include "Weapon.h"
 #include "Player.h"
 using namespace std;
+using namespace CRPG;
 
 namespace CRPG
 {
+    class Player;
+
     class Monster
     {
     private:
@@ -29,10 +32,10 @@ namespace CRPG
         Weapon& EquippedWeapon () { return _Weapon; }
 
         void TakeDamage (int damagePoint);
-        void Attack (Player& player);
-        bool Attack (Player& player, int& hitRoll, int& damageRoll);
+        void Attack ( Player& player);
+        bool Attack ( Player& player, int& hitRoll, int& damageRoll);
         bool IsDie () { return _Statistics.HitPoint() <= 0; }
+
+
     };
-
-
 }

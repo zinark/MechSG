@@ -1,28 +1,33 @@
 #include "Player.h"
+using namespace CRPG;
 
-
-CRPG::Player::Player(void)
+Player::Player(void)
 {
     Player ("");
 }
 
-CRPG::Player::Player( string name )
+Player::Player( string name )
 {
     _Name = name;
 }
 
 
-CRPG::Player::~Player(void)
+Player::~Player(void)
 {
 }
 
-CRPG::Player& CRPG::Player::WithStat( const CRPG::Statistics& stat )
+Player& Player::WithStat( const CRPG::Statistics& stat )
 {
     _Statistics = stat;
     return *this;
 }
 
-void CRPG::Player::TakeDamage( int value )
+void Player::TakeDamage( int value )
 {
     _Statistics.SetHitPoint(_Statistics.HitPoint() - value);
+}
+
+void Player::Attack( const Monster& monster )
+{
+
 }

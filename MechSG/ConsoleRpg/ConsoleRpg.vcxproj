@@ -65,13 +65,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CreationTests.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="DiceTests.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterFactory.cpp" />
     <ClCompile Include="MonsterTests.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="PlayerTests.cpp" />
     <ClCompile Include="Range.cpp" />
     <ClCompile Include="RPGProgram.cpp" />
@@ -83,7 +86,9 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterFactory.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="Range.h" />
     <ClInclude Include="RPGProgram.h" />
     <ClInclude Include="Statistics.h" />
