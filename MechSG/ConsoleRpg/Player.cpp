@@ -60,10 +60,16 @@ Player& CRPG::Player::Experienced( int value )
     return *this;
 }
 
-bool CRPG::Player::CanRun()
+bool Player::CanRun()
 {
     Dice dice (Range(1,4));
     return dice.Roll() == 1;
+}
+
+void Player::AddExperience( int totalExperience )
+{
+    _Experience += totalExperience;
+    LevelUpIfApplicable();
 }
 
 void Player::Rest()
@@ -71,9 +77,9 @@ void Player::Rest()
     _Statistics.SetHitPoint(_Statistics.MaxHitPoint());
 }
 
-void Player::LevelUp()
+void Player::LevelUpIfApplicable()
 {
-    if (_Experience >= _NextLevel)
+    if (_Experience >= _NextLevelExperience)
     {
         _Experience = 0;
         _Statistics.SetLevel(_Statistics.Level() + 1);
@@ -81,7 +87,7 @@ void Player::LevelUp()
         _Statistics.SetMaxHitPoint(_Statistics.MaxHitPoint() + Dice(Range(3,9)).Roll());
         _Statistics.SetArmor(_Statistics.Armor() + Dice(Range(1,4)).Roll());
 
-        _NextLevel = _Statistics.Level() * _Statistics.Level() * 1000;
+        _NextLevelExperience = _Statistics.Level() * _Statistics.Level() * 1000;
         _Statistics.SetHitPoint(_Statistics.MaxHitPoint());
     }
 }

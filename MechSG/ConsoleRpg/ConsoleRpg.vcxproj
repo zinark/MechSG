@@ -65,6 +65,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChallengerTests.cpp" />
     <ClCompile Include="CreationTests.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="DiceTests.cpp" />
@@ -85,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="IChallenger.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterFactory.h" />
     <ClInclude Include="Player.h" />

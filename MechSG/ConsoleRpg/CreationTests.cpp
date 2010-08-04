@@ -20,7 +20,7 @@ TEST (Creation, MonsterFactory_MonsterCreation)
     EXPECT_EQ ("ORC", MonsterFactory::Instance().Create("orc").Name());
 }
 
-TEST (Creation, PlayerFactory)
+TEST (Creation, PlayerFactory_PlayerCreation)
 {
     EXPECT_EQ ("FIGHTER", PlayerFactory::Instance().Create ("fighter").Name());
     EXPECT_EQ ("WIZARD", PlayerFactory::Instance().Create ("wizard").Name());

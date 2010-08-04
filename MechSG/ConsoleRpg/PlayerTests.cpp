@@ -32,7 +32,7 @@ TEST (Player, CanLevelup)
 {
     Player p1 = PlayerFactory::Instance().Create("fighter");
     Statistics oldStat = p1.GetStatistics();
-    p1.LevelUp ();
+    p1.LevelUpIfApplicable ();
     Statistics newStat = p1.GetStatistics();
 
     EXPECT_GT (newStat.Accuracy (), oldStat.Accuracy ());
@@ -49,4 +49,12 @@ TEST (Player, CanRest)
     p1.GetStatistics ().SetHitPoint (1);
     p1.Rest ();
     EXPECT_EQ (p1.GetStatistics().MaxHitPoint(), p1.GetStatistics().HitPoint());
+}
+
+TEST (Player, CanWinExperience)
+{
+    Player p1 = PlayerFactory::Instance().Create("fighter");
+    p1.AddExperience (1000);
+    EXPECT_EQ (2, p1.GetStatistics ().Level());
+    EXPECT_EQ (4000, p1.NextLevelExperience());
 }
