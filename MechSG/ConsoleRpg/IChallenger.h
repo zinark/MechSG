@@ -17,6 +17,7 @@ namespace CRPG
         
         virtual bool IsDie () = 0;
         virtual void TakeDamage (int damageQuantity) = 0;
+        virtual void Attack (IChallenger& monster) = 0;
         
         virtual IChallenger& WithStat (const Statistics& stat) = 0;
         virtual IChallenger& Weaponed (const Weapon& weapon) = 0;

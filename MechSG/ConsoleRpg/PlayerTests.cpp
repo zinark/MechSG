@@ -9,7 +9,7 @@ using namespace CRPG;
 
 TEST (Player, Construction)
 {
-    Player player = Player("P1")
+    Player player = (Player&) Player("P1")
         .WithStat (Statistics().SetHitPoint(100).SetAccuracy(10).SetArmor(10));
 
     EXPECT_EQ (100, player.GetStatistics ().HitPoint());

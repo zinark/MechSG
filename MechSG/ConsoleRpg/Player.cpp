@@ -4,7 +4,7 @@ using namespace CRPG;
 
 Player::Player(void)
 {
-    Player ("");
+    _Name = "";
 }
 
 Player::Player( string name )
@@ -17,32 +17,6 @@ Player::~Player(void)
 {
 }
 
-Player& Player::WithStat( const CRPG::Statistics& stat )
-{
-    _Statistics = stat;
-    return *this;
-}
-
-Player& Player::Weaponed( const Weapon& weapon )
-{
-    _Weapon = weapon;
-    return *this;
-}
-
-
-void Player::Attack( Monster& monster )
-{
-    Dice hitDice (Range(1,20));
-    Dice damageDice (_Weapon.DamageRange());
-    int hitRoll = hitDice.Roll();
-    if (_Statistics.Accuracy() > hitRoll)
-    {
-        int damageRoll = damageDice.Roll();
-        int damage = damageRoll - monster.GetStatistics().Armor();
-        if (damage < 0) damage = 0;
-        monster.TakeDamage(damage);
-    }
-}
 
 Player& CRPG::Player::Experienced( int value )
 {

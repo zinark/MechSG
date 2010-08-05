@@ -1,43 +1,56 @@
 #pragma once
 #include "IChallenger.h"
+using namespace CRPG;
 
-class Challenger : public IChallenger
+namespace CRPG
 {
-protected :
-    string _Name;
-    Statistics _Statistics;
-    Weapon _Weapon;
+    class Challenger : public IChallenger
+    {
+    private:
+        int _LastHitRoll;
+        int _LastDamageRoll;
 
-public:
-    virtual ~Challenger (void) = 0 { };
-    bool IsDie ();
-    void TakeDamage (int damageQuantity);
-    
-    virtual string& Name () 
-    { 
-        return _Name; 
-    }
-    
-    virtual Statistics& GetStatistics () 
-    { 
-        return _Statistics; 
-    }
-    
-    virtual Weapon& GetWeapon () 
-    { 
-        return _Weapon;
-    }
-    
-    virtual IChallenger& WithStat (const Statistics& stat) 
-    { 
-        _Statistics = stat; 
-        return *this; 
-    }
-    
-    virtual IChallenger& Weaponed (const Weapon& weapon) 
-    { 
-        _Weapon = weapon; 
-        return *this; 
-    }
-};
+    public:
+        int GetLastHitRoll () const { return _LastHitRoll; }
+        int GetLastDamageRoll () const { return _LastDamageRoll; }
 
+    protected :
+        string _Name;
+        Statistics _Statistics;
+        Weapon _Weapon;
+
+    public:
+        virtual ~Challenger (void) = 0 { };
+        
+        bool IsDie ();
+        void TakeDamage (int damageQuantity);
+        void Attack (IChallenger& monster);
+
+        string& Name () 
+        { 
+            return _Name; 
+        }
+
+        Statistics& GetStatistics () 
+        { 
+            return _Statistics; 
+        }
+
+        Weapon& GetWeapon () 
+        { 
+            return _Weapon;
+        }
+
+        IChallenger& WithStat (const Statistics& stat) 
+        { 
+            _Statistics = stat; 
+            return *this; 
+        }
+
+        IChallenger& Weaponed (const Weapon& weapon) 
+        { 
+            _Weapon = weapon; 
+            return *this; 
+        }
+    };
+}

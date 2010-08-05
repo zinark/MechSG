@@ -22,8 +22,6 @@ namespace CRPG
         Player (string name);
         ~Player(void);
 
-        
-        void Attack (Monster& monster);
         bool CanRun ();
         void LevelUpIfApplicable ();
         void Rest ();
@@ -31,16 +29,9 @@ namespace CRPG
 
         int NextLevelExperience () const { return _NextLevelExperience; }
 
-        Player& WithStat (const Statistics& stat);
-        Player& Weaponed (const Weapon& weapon);
+        // Player& Challenger::WithStat(const Statistics& stat);
+        // Player& WithStat (const Statistics& stat);
+        //Player& Weaponed (const Weapon& weapon);
         Player& Experienced (int value);
-
-        // NewOnes
-        // virtual IChallenger& WithStat (const Statistics& stat) = 0;
-        // virtual IChallenger& Weaponed (const Weapon& weapon) = 0;
-        // Statistics& GetStatistics () { return _Statistics; }
-        // Weapon& GetWeapon () { return _Weapon; }
-        // string& Name () { return _Name;}
-
     };
 }
