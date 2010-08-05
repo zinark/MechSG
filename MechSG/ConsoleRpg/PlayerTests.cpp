@@ -32,6 +32,8 @@ TEST (Player, CanLevelup)
 {
     Player p1 = PlayerFactory::Instance().Create("fighter");
     Statistics oldStat = p1.GetStatistics();
+    
+    p1.AddExperience(1200);
     p1.LevelUpIfApplicable ();
     Statistics newStat = p1.GetStatistics();
 

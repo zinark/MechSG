@@ -6,52 +6,53 @@ PlayerFactory PlayerFactory::_Instance;
 
 PlayerFactory::PlayerFactory(void)
 {
-    Player p;
-
-    p = Player ("FIGHTER");
-    p.Experienced(0);
-    p.Weaponed(Weapon ("Sword", Range(1,8)));
-    p.WithStat(Statistics()
+    _Container["fighter"] = (Player&) Player ("FIGHTER")
+        .SetNextLevelExperience (1000)
+        .Experienced(0)
+        .Weaponed(Weapon ("Sword", Range(1,8)))
+        .WithStat(Statistics()
         .SetLevel(1)
         .SetAccuracy(10)
         .SetHitPoint(20)
         .SetMaxHitPoint(20)
         .SetArmor(4));
-    _Container["fighter"] = p;
 
-    p = Player("WIZARD");
-    p.Experienced(0);
-    p.Weaponed(Weapon ("Staff", Range(1,4)));
-    p.WithStat(Statistics()
+    _Container["wizard"] = (Player&) Player("WIZARD")
+        .SetNextLevelExperience (1000)
+        .Experienced(0)
+        .Weaponed(Weapon ("Staff", Range(1,4)))
+        .WithStat(Statistics()
         .SetLevel(1)
         .SetAccuracy(5)
         .SetHitPoint(10)
         .SetMaxHitPoint(10)
         .SetArmor(1));
-    _Container["wizard"] = p;
 
-    p = Player("CLERIC");
-    p.Experienced (0);
-    p.Weaponed(Weapon ("Flail", Range(1,6)));
-    p.WithStat(Statistics()
+
+    _Container["cleric"] = (Player&) Player("CLERIC")
+        .SetNextLevelExperience (1000)
+        .Experienced (0)
+        .Weaponed(Weapon ("Flail", Range(1,6)))
+        .WithStat(Statistics()
         .SetLevel(1)
         .SetAccuracy(8)
         .SetHitPoint(15)
         .SetMaxHitPoint(15)
         .SetArmor(3));
-    _Container["cleric"] = p;
-        
-        
-    p = Player("THIEF");
-    p.Experienced (0);
-    p.Weaponed(Weapon ("Short Sword", Range(1,6)));
-    p.WithStat(Statistics()
+
+
+
+    _Container["thief"] = (Player&) Player("THIEF")
+        .SetNextLevelExperience (1000)
+        .Experienced (0)
+        .Weaponed(Weapon ("Short Sword", Range(1,6)))
+        .WithStat(Statistics()
         .SetLevel(1)
         .SetAccuracy(7)
         .SetHitPoint(12)
         .SetMaxHitPoint(12)
         .SetArmor(2));
-    _Container["thief"] = p;
+
 }
 
 PlayerFactory::~PlayerFactory(void)

@@ -75,6 +75,12 @@
     <ClCompile Include="Challenger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PersistenceTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPersister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -111,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Challenger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerPersister.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

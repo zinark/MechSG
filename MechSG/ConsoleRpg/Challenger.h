@@ -9,6 +9,7 @@ namespace CRPG
     private:
         int _LastHitRoll;
         int _LastDamageRoll;
+        
 
     public:
         int GetLastHitRoll () const { return _LastHitRoll; }
@@ -18,6 +19,7 @@ namespace CRPG
         string _Name;
         Statistics _Statistics;
         Weapon _Weapon;
+        Challenger () { _LastDamageRoll = 0; _LastHitRoll = 0;}
 
     public:
         virtual ~Challenger (void) = 0 { };
