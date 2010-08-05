@@ -17,8 +17,8 @@ TEST (Monster, ConstructionOfAMonster)
 
     EXPECT_EQ (100, monster.XpReward ());
     EXPECT_EQ ("Orc", monster.Name ());
-    EXPECT_EQ ("Sword", monster.EquippedWeapon().Name());
-    EXPECT_EQ (10, monster.Statistics().HitPoint());
+    EXPECT_EQ ("Sword", monster.GetWeapon().Name());
+    EXPECT_EQ (10, monster.GetStatistics().HitPoint());
 }
 
 TEST (Monster, ReferenceAddressesShouldBeTheSameOnFluenting)
@@ -34,7 +34,7 @@ TEST (Monster, CanTakeDamage)
     Monster m = Monster ("foo", 100).WithStat (Statistics().SetHitPoint(50));
     m.TakeDamage (50);
 
-    EXPECT_EQ (0, m.Statistics ().HitPoint ());
+    EXPECT_EQ (0, m.GetStatistics ().HitPoint ());
 }
 
 TEST (Monster, CanDie)

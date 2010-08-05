@@ -12,7 +12,8 @@ Monster::Monster( const string& name, int xpReward )
 
 Monster::Monster()
 {
-    Monster ("", 0);
+    _Name = "";
+    _XpReward = 0;
 }
 
 Monster::~Monster( void )

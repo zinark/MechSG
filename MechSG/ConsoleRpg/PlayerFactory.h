@@ -15,9 +15,9 @@ namespace CRPG
         map<string, Player> _Container;
     
     public:
-        static PlayerFactory Instance ();
+        static PlayerFactory& Instance ();
         PlayerFactory(void);
         ~PlayerFactory(void);
-        Player& Create (string name);
+        Player Create (string name);
     };
 }

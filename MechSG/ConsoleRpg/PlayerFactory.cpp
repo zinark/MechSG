@@ -51,7 +51,7 @@ PlayerFactory::~PlayerFactory(void)
 {
 }
 
-Player& PlayerFactory::Create( string name )
+Player PlayerFactory::Create( string name )
 {
     // dbc for container
     map<string, Player>::iterator it;
@@ -59,7 +59,7 @@ Player& PlayerFactory::Create( string name )
     return it->second;
 }
 
-PlayerFactory PlayerFactory::Instance()
+PlayerFactory& PlayerFactory::Instance()
 {
     if (&_Instance == 0)
     {

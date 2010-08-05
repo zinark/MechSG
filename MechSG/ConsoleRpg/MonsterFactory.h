@@ -16,7 +16,7 @@ namespace CRPG
     public:
         MonsterFactory(void);
         ~MonsterFactory(void);
-        Monster& Create (string name);
+        Monster Create (string name);
         static MonsterFactory& Instance ();
     };
 

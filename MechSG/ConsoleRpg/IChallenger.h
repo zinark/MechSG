@@ -10,8 +10,7 @@ namespace CRPG
     class IChallenger
     {
     public:
-        
-        virtual ~IChallenger () {}
+        virtual ~IChallenger () {};
         virtual string& Name () = 0;
         virtual Statistics& GetStatistics () = 0;
         virtual Weapon& GetWeapon () = 0;
@@ -21,6 +20,5 @@ namespace CRPG
         
         virtual IChallenger& WithStat (const Statistics& stat) = 0;
         virtual IChallenger& Weaponed (const Weapon& weapon) = 0;
-
     };
 }

@@ -3,6 +3,7 @@
 #include "Statistics.h"
 #include "Weapon.h"
 #include "Player.h"
+#include "IChallenger.h"
 using namespace std;
 using namespace CRPG;
 
@@ -10,7 +11,7 @@ namespace CRPG
 {
     class Player;
 
-    class Monster
+    class Monster : public IChallenger
     {
     private:
         int _XpReward;
@@ -21,15 +22,15 @@ namespace CRPG
     public:
         Monster(const string& name, int xpReward);
         Monster ();
-        ~Monster(void);
+        virtual ~Monster(void);
 
         Monster& WithStat (const Statistics& statistics);
         Monster& Weaponed (const Weapon& weapon);
 
         int XpReward () const { return _XpReward; }
         string& Name () { return _Name; }
-        Statistics& Statistics () { return _Statistics;}
-        Weapon& EquippedWeapon () { return _Weapon; }
+        Statistics& GetStatistics () { return _Statistics;}
+        Weapon& GetWeapon () { return _Weapon; }
 
         void TakeDamage (int damagePoint);
         void Attack ( Player& player);

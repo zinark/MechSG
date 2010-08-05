@@ -72,6 +72,9 @@
     <ClCompile Include="ChallengerTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Challenger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IChallenger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

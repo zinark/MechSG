@@ -25,7 +25,7 @@ MonsterFactory& MonsterFactory::Instance()
     return _Instance;
 }
 
-Monster& MonsterFactory::Create( string name )
+Monster MonsterFactory::Create( string name )
 {
     return _Container[name];
 }

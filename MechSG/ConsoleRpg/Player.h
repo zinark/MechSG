@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Statistics.h"
 #include "Monster.h"
-#include "IChallenger.h"
+#include "Challenger.h"
 using namespace std;
 using namespace CRPG;
 
@@ -10,13 +10,10 @@ namespace CRPG
 {
     class Monster;
 
-    class Player : public IChallenger
+    class Player : public Challenger
     {
 
     private:
-        string _Name;
-        Statistics _Statistics;
-        Weapon _Weapon;
         int _Experience;
         int _NextLevelExperience;
 
@@ -27,17 +24,11 @@ namespace CRPG
 
         
         void Attack (Monster& monster);
-        void TakeDamage (int value);
-        bool IsDie ();
         bool CanRun ();
         void LevelUpIfApplicable ();
         void Rest ();
         void AddExperience (int totalExperience);
 
-        Statistics& GetStatistics () { return _Statistics; }
-        Weapon& GetWeapon () { return _Weapon; }
-
-        string& Name () { return _Name;}
         int NextLevelExperience () const { return _NextLevelExperience; }
 
         Player& WithStat (const Statistics& stat);
@@ -47,6 +38,9 @@ namespace CRPG
         // NewOnes
         // virtual IChallenger& WithStat (const Statistics& stat) = 0;
         // virtual IChallenger& Weaponed (const Weapon& weapon) = 0;
+        // Statistics& GetStatistics () { return _Statistics; }
+        // Weapon& GetWeapon () { return _Weapon; }
+        // string& Name () { return _Name;}
 
     };
 }

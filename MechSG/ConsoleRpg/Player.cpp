@@ -30,11 +30,6 @@ Player& Player::Weaponed( const Weapon& weapon )
 }
 
 
-void Player::TakeDamage( int value )
-{
-    _Statistics.SetHitPoint(_Statistics.HitPoint() - value);
-}
-
 void Player::Attack( Monster& monster )
 {
     Dice hitDice (Range(1,20));
@@ -43,15 +38,10 @@ void Player::Attack( Monster& monster )
     if (_Statistics.Accuracy() > hitRoll)
     {
         int damageRoll = damageDice.Roll();
-        int damage = damageRoll - monster.Statistics().Armor();
+        int damage = damageRoll - monster.GetStatistics().Armor();
         if (damage < 0) damage = 0;
         monster.TakeDamage(damage);
     }
-}
-
-bool Player::IsDie()
-{
-    return _Statistics.HitPoint() <= 0;
 }
 
 Player& CRPG::Player::Experienced( int value )
