@@ -18,7 +18,8 @@ namespace SpikeW32
         int _Y;
         HBRUSH _Background;
 
-        static LRESULT CALLBACK WindowProcedure (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
+        LRESULT CALLBACK WindowProcedure (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
+        static LRESULT CALLBACK MessageRouter (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
 
     public:
         

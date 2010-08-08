@@ -36,7 +36,7 @@ bool Window::Create()
 {
     WNDCLASS win;
     win.style = CS_HREDRAW | CS_VREDRAW;
-    win.lpfnWndProc = WindowProcedure;
+    win.lpfnWndProc = MessageRouter;
     win.cbClsExtra = 0;
     win.cbWndExtra = 0;
     win.hInstance = _ApplicationInstanceHandle;
@@ -94,4 +94,21 @@ LRESULT CALLBACK Window::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam
 void Window::SetBackgroundColor( const HBRUSH& brush )
 {
     _Background = brush;
+}
+
+LRESULT CALLBACK Window::MessageRouter( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
+{
+    Window* window = NULL;
+    
+    if (message == WM_NCCREATE)
+    {
+        window = reinterpret_cast<Window*> (((LPCREATESTRUCT) lParam)->lpCreateParams);
+        SetWindowLong (hWnd, GWL_USERDATA, reinterpret_cast<long> (window));
+    }
+    else
+    {
+        window = reinterpret_cast<Window*> (GetWindowLong (hWnd, GWL_USERDATA));
+    }
+    
+    return window->WindowProcedure(hWnd, message, wParam, lParam);
 }
