@@ -42,12 +42,12 @@ bool Window::Create()
     win.hInstance = _ApplicationInstanceHandle;
     win.hIcon = LoadIcon (_ApplicationInstanceHandle, IDI_APPLICATION); //IDI_APPLICATION MAKEINTRESOURCE (IDI_ICON1)
     win.hCursor = LoadCursor (_ApplicationInstanceHandle, IDC_ARROW);
-    win.hbrBackground =  (HBRUSH) GetStockObject(WHITE_BRUSH);
+    win.hbrBackground =  _Background;
     win.lpszClassName = _Name;
     win.lpszMenuName = 0;
     RegisterClass (&win);
     UINT style = WS_CAPTION | WS_POPUP;
-    _WindowHandle = CreateWindow (_Name, _Title, style, 0,0, _Width, _Height, 0, 0, _ApplicationInstanceHandle, 0);
+    _WindowHandle = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, 0, _ApplicationInstanceHandle, 0);
     return (_WindowHandle != 0);
 }
 
@@ -83,10 +83,15 @@ LRESULT CALLBACK Window::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam
 
     if (message == WM_LBUTTONDOWN)
     {
-        CString str;
-        str.Format(L"HWND = %s", &hWnd);
-        MessageBox (hWnd, str, L"Message", MB_OK);
+        //CString str;
+        //str.Format(L"HWND = %s");
+        //MessageBox (hWnd, str, L"Message", MB_OK);
     }
 
     return DefWindowProc (hWnd, message, wParam, lParam);
+}
+
+void Window::SetBackgroundColor( const HBRUSH& brush )
+{
+    _Background = brush;
 }
