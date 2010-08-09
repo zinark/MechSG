@@ -20,7 +20,7 @@ namespace UI { namespace Core {
         int _Height;
         int _X;
         int _Y;
-        HBRUSH _Background;
+        LOGBRUSH _BackgroundBrush;
 
         virtual LRESULT CALLBACK WindowProcedure (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam ) = 0;
         static LRESULT CALLBACK MessageRouter (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
@@ -38,7 +38,7 @@ namespace UI { namespace Core {
         void SetPosition (const int& x, const int& y);
         void SetTitle (const WCHAR* title);
         void SetName (const WCHAR* name );
-        void SetBackgroundColor (const HBRUSH& brush);
+        void SetBackgroundColor (const LOGBRUSH& brush);
         bool Create ();
         void Show ();
 

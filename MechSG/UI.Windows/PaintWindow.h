@@ -12,6 +12,7 @@ namespace UI { namespace Windows
         virtual ~PaintWindow(void);
 
     protected:
+        void OnWindowCreated ();
         void OnKeyPressed(unsigned int keyCode);
     };
 }}

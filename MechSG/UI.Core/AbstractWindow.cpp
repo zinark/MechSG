@@ -76,6 +76,6 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
         return 0;
     }
 
-    return DefWindowProc (hWnd, message, wParam, lParam);
+    return 0;
 }
 

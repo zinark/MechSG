@@ -9,7 +9,10 @@ AbstractCoreWindow::AbstractCoreWindow( const HINSTANCE& appInstanceHandle, cons
 {
     _X = 0;
     _Y = 0;
-    _Background = 0;
+    LOGBRUSH defaultBrush;
+    defaultBrush.lbColor = RGB (50,50,50);
+    defaultBrush.lbStyle = BS_SOLID;
+    _BackgroundBrush = defaultBrush;
     _Width = 800;
     _Height = 600;
     _HInstance = appInstanceHandle;
@@ -42,12 +45,9 @@ bool AbstractCoreWindow::Create()
     win.hInstance = _HInstance;
     win.hIcon = LoadIcon (_HInstance, IDI_APPLICATION); //IDI_APPLICATION MAKEINTRESOURCE (IDI_ICON1)
     win.hCursor = LoadCursor (_HInstance, IDC_ARROW);
-    if (_Background == 0)
-        win.hbrBackground = (HBRUSH) GetStockObject (WHITE_BRUSH);
-    else
-        win.hbrBackground =  _Background;
+    win.hbrBackground = CreateBrushIndirect(&_BackgroundBrush);
     win.lpszClassName = _Name;
-    win.lpszMenuName = 0;
+    win.lpszMenuName = NULL;
     RegisterClass (&win);
     UINT style = WS_CAPTION | WS_POPUP;
     _HWnd = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, 0, _HInstance, this);
@@ -66,9 +66,9 @@ void AbstractCoreWindow::SetPosition( const int& x, const int& y )
     _Y = y;
 }
 
-void AbstractCoreWindow::SetBackgroundColor( const HBRUSH& brush )
+void AbstractCoreWindow::SetBackgroundColor( const LOGBRUSH& brush )
 {
-    _Background = brush;
+    _BackgroundBrush = brush;
 }
 
 LRESULT CALLBACK AbstractCoreWindow::MessageRouter( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
