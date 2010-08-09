@@ -11,9 +11,23 @@ HBRUSH SampleColor ()
     return CreateBrushIndirect(&lb);
 }
 
+class MainWindow : public Window
+{
+public:
+    MainWindow (const HINSTANCE& hInst, const int& showStyle) : Window (hInst, showStyle)
+    {
+
+    }
+
+    void MainWindow::OnMousePressed(int x, int y, MouseButton mb )
+    {
+        MessageBox (_hWnd, L"Mouse Pressed", L"HEHE", MB_OK);
+    }
+};
+
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle)
 {
-    Window win (hInstance, showStyle);
+    MainWindow win (hInstance, showStyle);
     win.SetTitle (L"XWin");
     win.SetName(L"XWinClass");
     win.SetPosition (0, 0);

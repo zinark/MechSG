@@ -1,5 +1,6 @@
 #include "Window.h"
 #include <atlstr.h>
+#include <assert.h>
 using namespace SpikeW32;
 
 Window::~Window(void)
@@ -47,14 +48,14 @@ bool Window::Create()
     win.lpszMenuName = 0;
     RegisterClass (&win);
     UINT style = WS_CAPTION | WS_POPUP;
-    _WindowHandle = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, 0, _ApplicationInstanceHandle, 0);
-    return (_WindowHandle != 0);
+    _hWnd = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, 0, _ApplicationInstanceHandle, this);
+    return (_hWnd != 0);
 }
 
 void Window::Show()
 {
-    ShowWindow (_WindowHandle, _ShowStyle);
-    UpdateWindow(_WindowHandle);
+    ShowWindow (_hWnd, _ShowStyle);
+    UpdateWindow(_hWnd);
 }
 
 void Window::SetPosition( const int& x, const int& y )
@@ -72,6 +73,8 @@ LRESULT CALLBACK Window::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam
 
     if (message == WM_KEYDOWN)
     {
+        OnKeyPressed(wParam);
+        
         if (wParam == VK_ESCAPE)
         {
             if (MessageBox (0, L"Are you sure?", L"Exit?", MB_YESNO) == IDYES)
@@ -83,10 +86,44 @@ LRESULT CALLBACK Window::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam
 
     if (message == WM_LBUTTONDOWN)
     {
-        //CString str;
-        //str.Format(L"HWND = %s");
-        //MessageBox (hWnd, str, L"Message", MB_OK);
+        int x = LOWORD (lParam);
+        int y = HIWORD (lParam);
+        OnMousePressed(x,y, MouseButton::Left);
+        return 0;
     }
+
+    if (message == WM_LBUTTONUP)
+    {
+        int x = LOWORD (lParam);
+        int y = HIWORD (lParam);
+        OnMouseReleased(x,y, MouseButton::Left);
+        return 0;
+    }
+
+    if (message == WM_RBUTTONDOWN)
+    {
+        int x = LOWORD (lParam);
+        int y = HIWORD (lParam);
+        OnMousePressed(x,y, MouseButton::Right);
+        return 0;
+    }
+
+    if (message == WM_RBUTTONUP)
+    {
+        int x = LOWORD (lParam);
+        int y = HIWORD (lParam);
+        OnMouseReleased(x,y, MouseButton::Right);
+        return 0;
+    }
+
+    if (message == WM_MOUSEMOVE)
+    {
+        int x = LOWORD (lParam);
+        int y = HIWORD (lParam);
+        OnMouseMove (x,y);
+        return 0;
+    }
+
 
     return DefWindowProc (hWnd, message, wParam, lParam);
 }
@@ -99,16 +136,22 @@ void Window::SetBackgroundColor( const HBRUSH& brush )
 LRESULT CALLBACK Window::MessageRouter( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
     Window* window = NULL;
-    
+
     if (message == WM_NCCREATE)
     {
-        window = reinterpret_cast<Window*> (((LPCREATESTRUCT) lParam)->lpCreateParams);
-        SetWindowLong (hWnd, GWL_USERDATA, reinterpret_cast<long> (window));
+        SetWindowLong (hWnd, GWL_USERDATA, long (((LPCREATESTRUCT) lParam)->lpCreateParams));
+        
+    }
+    window = (Window*) (GetWindowLong (hWnd, GWL_USERDATA));
+    
+    if (window)
+    {
+        return window->WindowProcedure(hWnd, message, wParam, lParam);
     }
     else
     {
-        window = reinterpret_cast<Window*> (GetWindowLong (hWnd, GWL_USERDATA));
+        return DefWindowProc (hWnd, message, wParam, lParam);
     }
+        
     
-    return window->WindowProcedure(hWnd, message, wParam, lParam);
 }
