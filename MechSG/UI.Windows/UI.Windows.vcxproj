@@ -62,6 +62,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MenuWindow.h" />
     <ClInclude Include="PaintWindow.h" />
     <ClInclude Include="Shapes\inc\EllipseShape.h" />
     <ClInclude Include="Shapes\inc\LineShape.h" />
@@ -69,6 +70,7 @@
     <ClInclude Include="Shapes\inc\Shape.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MenuWindow.cpp" />
     <ClCompile Include="PaintWindow.cpp" />
     <ClCompile Include="Shapes\src\EllipseShape.cpp" />
     <ClCompile Include="Shapes\src\LineShape.cpp" />

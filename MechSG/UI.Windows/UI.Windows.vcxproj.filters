@@ -30,6 +30,9 @@
     <ClInclude Include="Shapes\inc\EllipseShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MenuWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PaintWindow.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Shapes\src\EllipseShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,6 +9,7 @@ AbstractCoreWindow::AbstractCoreWindow( const HINSTANCE& appInstanceHandle, cons
 {
     _X = 0;
     _Y = 0;
+    _Menu = 0;
     LOGBRUSH defaultBrush;
     defaultBrush.lbColor = RGB (50,50,50);
     defaultBrush.lbStyle = BS_SOLID;
@@ -50,7 +51,7 @@ bool AbstractCoreWindow::Create()
     win.lpszMenuName = NULL;
     RegisterClass (&win);
     UINT style = WS_CAPTION | WS_POPUP;
-    _HWnd = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, 0, _HInstance, this);
+    _HWnd = CreateWindow (_Name, _Title, style, _X,_Y, _Width, _Height, 0, _Menu, _HInstance, this);
     return (_HWnd != 0);
 }
 
@@ -86,4 +87,9 @@ LRESULT CALLBACK AbstractCoreWindow::MessageRouter( HWND hWnd, UINT message, WPA
         window->WindowProcedure(hWnd, message, wParam, lParam);
     }
     return DefWindowProc (hWnd, message, wParam, lParam);
+}
+
+void AbstractCoreWindow::SetMenu( const HMENU& menu )
+{
+    _Menu = menu;
 }

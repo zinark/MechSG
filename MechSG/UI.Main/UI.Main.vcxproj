@@ -85,6 +85,12 @@
       <Project>{07cd09ee-96fd-42a6-b07a-d4b6d9d2931d}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UI.Windows.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

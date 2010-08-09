@@ -1,48 +1,55 @@
 #include <Windows.h>
 #include "PaintWindow.h"
 #include "Application.h"
+#include <vector>
+#include <MenuWindow.h>
+#include "resource.h"
 
+using namespace std;
 using namespace UI::Windows;
 using namespace UI::Core;
 
-AbstractWindow* MainWindow (const HINSTANCE& hInstance, const int& showStyle)
+AbstractWindow* CreatePaintWindow (const HINSTANCE& hInstance, const int& showStyle)
 {
-    PaintWindow* pw = new PaintWindow (hInstance, showStyle);
-    pw->SetTitle(L"MAIN");
-    pw->SetName(L"CMAIN");
-    pw->SetSize(400, 400);
-    pw->SetPosition(0, 0);
-    pw->Create();
+    AbstractWindow* win = new PaintWindow (hInstance, showStyle);
+    win->SetTitle(L"MAIN");
+    win->SetName(L"CMAIN");
+    win->SetSize(400, 400);
+    win->SetPosition(0, 0);
+    
     LOGBRUSH logBrush;
     logBrush.lbStyle = BS_SOLID;
     logBrush.lbColor = RGB (120, 120, 160);
-    pw->SetBackgroundColor(logBrush);
-    return pw;
+    win->SetBackgroundColor(logBrush);
+    
+    return win;
 }
 
-AbstractWindow* HelperWindow (const HINSTANCE& hInstance, const int& showStyle)
+AbstractWindow* CreateMenuWindow (const HINSTANCE& hInstance, const int& showStyle)
 {
-    PaintWindow* pw = new PaintWindow (hInstance, showStyle);
-    pw->SetTitle(L"Test");
-    pw->SetName(L"CTEST");
-    pw->SetSize(400, 400);
-    pw->SetPosition(410, 0);
-    pw->Create();
-    LOGBRUSH logBrush;
-    logBrush.lbStyle = BS_SOLID;
-    logBrush.lbColor = RGB (120, 120, 160);
-    pw->SetBackgroundColor(logBrush);
-    return pw;
+    AbstractWindow* win = new MenuWindow (hInstance, showStyle);
+    win->SetTitle(L"Menu Window");
+    win->SetName(L"XMenuWindow");
+    win->SetSize(400, 400);
+    win->SetPosition(410, 0);
+    return win;
 }
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
-    AbstractWindow* win = MainWindow(hInstance, showStyle);
-    AbstractWindow* helper = HelperWindow(hInstance, showStyle);
-
-    win->Show();
-    helper->Show();
+    vector<AbstractWindow*> windows;
+    windows.push_back(CreatePaintWindow(hInstance, showStyle));
+    windows.push_back(CreateMenuWindow(hInstance, showStyle));
+    for (int i=0; i < windows.size(); ++i)
+    {
+        windows[i]->Create();
+        windows[i]->Show();
+    }
+    
     Application ().Start();
-    delete win;
-    delete helper;
+
+    for (int i=0; i < windows.size();++i)
+    {
+        delete windows[i];
+    }
 }

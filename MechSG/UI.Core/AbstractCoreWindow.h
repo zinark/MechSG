@@ -7,6 +7,7 @@ namespace UI { namespace Core {
     protected:
         HINSTANCE _HInstance;
         HWND _HWnd;
+        HMENU _Menu;
 
         int GetWidth () { return _Width;}
         int GetHeight () { return _Height;}
@@ -21,6 +22,7 @@ namespace UI { namespace Core {
         int _X;
         int _Y;
         LOGBRUSH _BackgroundBrush;
+        
 
         virtual LRESULT CALLBACK WindowProcedure (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam ) = 0;
         static LRESULT CALLBACK MessageRouter (HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
@@ -39,6 +41,7 @@ namespace UI { namespace Core {
         void SetTitle (const WCHAR* title);
         void SetName (const WCHAR* name );
         void SetBackgroundColor (const LOGBRUSH& brush);
+        void SetMenu (const HMENU& menu);
         bool Create ();
         void Show ();
 

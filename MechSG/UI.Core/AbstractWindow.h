@@ -28,6 +28,7 @@ namespace UI { namespace Core
         virtual void OnMouseReleased (int x, int y, MouseButton mouseButton) {}
         virtual void OnMouseMove (int x, int y)  {}
         virtual void OnPaint (const HDC& hdc) {}
+        virtual void OnMenuCommand (unsigned int parameter) {}
     };
 }
 }

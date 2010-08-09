@@ -76,6 +76,12 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
         return 0;
     }
 
+    if (message == WM_COMMAND)
+    {
+        OnMenuCommand (LOWORD (wParam));
+        return 0;
+    }
+
     return 0;
 }
 
