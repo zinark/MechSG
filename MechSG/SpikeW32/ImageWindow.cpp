@@ -52,8 +52,6 @@ void ImageWindow::OnPaint( const HDC& hdc )
         }
     }
 
-    
-
     SelectObject (hdc, oldPen);
     SelectObject (hdc, oldBrush);
 
