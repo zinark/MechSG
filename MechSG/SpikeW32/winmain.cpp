@@ -1,49 +1,31 @@
 #include <Windows.h>
 #include "Application.h"
 #include "Window.h"
+#include "DrawingWindow.h"
+#include "ImageWindow.h"
 using namespace SpikeW32;
 
 HBRUSH SampleColor ()
 {
     LOGBRUSH lb;
-    lb.lbColor = RGB (120, 100, 90);
+    lb.lbColor = RGB (250, 250, 250);
     lb.lbStyle = BS_SOLID;
     return CreateBrushIndirect(&lb);
 }
 
-class MainWindow : public Window
-{
-public:
-    MainWindow (const HINSTANCE& hInst, const int& showStyle) : Window (hInst, showStyle)
-    {
-
-    }
-
-    void MainWindow::OnMousePressed(int x, int y, MouseButton mb )
-    {
-        MessageBox (_hWnd, L"Mouse Pressed", L"HEHE", MB_OK);
-    }
-};
-
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle)
 {
-    MainWindow win (hInstance, showStyle);
-    win.SetTitle (L"XWin");
-    win.SetName(L"XWinClass");
-    win.SetPosition (0, 0);
-    win.SetSize (800, 600);
-    win.SetBackgroundColor (SampleColor ());
-    if (!win.Create ()) return false;
+    DrawingWindow imgWnd (hInstance, showStyle);
+    imgWnd.SetTitle(L"Drawing");
+    imgWnd.SetName (L"CDrawing");
+    imgWnd.SetPosition (600,0);
+    imgWnd.SetSize (600,400);
+    imgWnd.SetBackgroundColor (SampleColor());
     
-    Window toolbox (hInstance, showStyle);
-    toolbox.SetTitle (L"Toolbox");
-    toolbox.SetName(L"XToolboxClass");
-    toolbox.SetPosition (805, 0);
-    toolbox.SetSize (200, 400);
-    toolbox.SetBackgroundColor (SampleColor ());
-    if (!toolbox.Create ()) return false;
+    if (imgWnd.Create())
+    {
+        imgWnd.Show();
+        Application ().Start ();
+    }
     
-    win.Show ();
-    toolbox.Show ();
-    Application ().Start ();
 }

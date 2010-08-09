@@ -75,12 +75,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="AbstractWindow.cpp" />
+    <ClCompile Include="AbstractCoreWindow.cpp" />
+    <ClCompile Include="DrawingWindow.cpp" />
+    <ClCompile Include="ImageWindow.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="AbstractCoreWindow.h" />
+    <ClInclude Include="DrawingWindow.h" />
+    <ClInclude Include="ImageWindow.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpikeW32.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bitmap1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
