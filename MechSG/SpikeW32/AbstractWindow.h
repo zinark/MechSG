@@ -20,8 +20,7 @@ namespace SpikeW32
     protected:
         PAINTSTRUCT _PaintStruct;
 
-
-        virtual void OnInit () {}
+        virtual void OnWindowCreated () {}
         virtual void OnWindowDestroyed () {}
 
         virtual void OnKeyPressed (unsigned int keyCode) {}

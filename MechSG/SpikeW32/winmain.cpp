@@ -45,7 +45,13 @@ void SimpleWindowTest( HINSTANCE hInstance, int showStyle )
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle)
 {
-    DrawingWindowTest(hInstance, showStyle);
-    // SimpleWindowTest(hInstance, showStyle);
-
+    ImageWindow iw (hInstance, showStyle);
+    iw.SetTitle(L"MAIN");
+    iw.SetName(L"CMAIN");
+    iw.SetSize(800, 600);
+    iw.SetPosition(10, 10);
+    iw.SetBackgroundColor(SampleColor());
+    iw.Create();
+    iw.Show();
+    Application ().Start();
 }

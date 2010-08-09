@@ -8,6 +8,9 @@ namespace SpikeW32
         HINSTANCE _HInstance;
         HWND _HWnd;
 
+        int GetWidth () { return _Width;}
+        int GetHeight () { return _Height;}
+
     private:
         int _ShowStyle;
 
@@ -38,5 +41,7 @@ namespace SpikeW32
         void SetBackgroundColor (const HBRUSH& brush);
         bool Create ();
         void Show ();
+
+        
     };
 }

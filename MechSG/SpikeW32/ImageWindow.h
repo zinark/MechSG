@@ -17,6 +17,7 @@ namespace SpikeW32
         ~ImageWindow(void);
 
     protected:
+        void OnWindowCreated ();
         void OnMousePressed(int x, int y, MouseButton mouseButton);
         void OnMouseReleased(int x, int y, MouseButton mouseButton);
         void OnMouseMove(int x, int y);
