@@ -3,6 +3,7 @@ using namespace SpikeW32;
 
 AbstractWindow::AbstractWindow( const HINSTANCE& hInst, const int& showStyle ) : AbstractCoreWindow (hInst, showStyle)
 {
+    OnInit ();
 }
 
 AbstractWindow::~AbstractWindow(void)
@@ -11,14 +12,16 @@ AbstractWindow::~AbstractWindow(void)
 
 LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
-    if (message = WM_CREATE)
-    {
-        OnWindowCreated ();
-    }
+    //if (message = WM_NCCREATE)
+    //{
+    //    
+    //    return 0;
+    //}
     
     if (message == WM_DESTROY)
     {
         OnWindowDestroyed();
+        return 0;
     }
 
     if (message == WM_KEYDOWN)
@@ -68,10 +71,10 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
 
     if (message == WM_PAINT)
     {
-        PAINTSTRUCT _PaintStruct;
         HDC hdc = BeginPaint(_HWnd, &_PaintStruct);
         OnPaint(hdc);
         EndPaint(_HWnd, &_PaintStruct);
+        return 0;
     }
 }
 

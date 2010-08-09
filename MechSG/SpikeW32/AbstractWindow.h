@@ -18,8 +18,12 @@ namespace SpikeW32
         LRESULT CALLBACK WindowProcedure( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam );
 
     protected:
-        virtual void OnWindowCreated () {}
+        PAINTSTRUCT _PaintStruct;
+
+
+        virtual void OnInit () {}
         virtual void OnWindowDestroyed () {}
+
         virtual void OnKeyPressed (unsigned int keyCode) {}
         virtual void OnMousePressed (int x, int y, MouseButton mouseButton) {}
         virtual void OnMouseReleased (int x, int y, MouseButton mouseButton) {}

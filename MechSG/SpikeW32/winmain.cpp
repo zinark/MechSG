@@ -13,7 +13,7 @@ HBRUSH SampleColor ()
     return CreateBrushIndirect(&lb);
 }
 
-int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle)
+void DrawingWindowTest( HINSTANCE hInstance, int showStyle ) 
 {
     DrawingWindow imgWnd (hInstance, showStyle);
     imgWnd.SetTitle(L"Drawing");
@@ -21,11 +21,31 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle
     imgWnd.SetPosition (600,0);
     imgWnd.SetSize (600,400);
     imgWnd.SetBackgroundColor (SampleColor());
-    
+
     if (imgWnd.Create())
     {
         imgWnd.Show();
         Application ().Start ();
     }
-    
+}
+
+void SimpleWindowTest( HINSTANCE hInstance, int showStyle ) 
+{
+    Window w (hInstance, showStyle);
+    w.SetName(L"A"); w.SetTitle(L"B");
+    w.SetBackgroundColor(SampleColor());
+    w.SetSize(320, 240);
+    w.SetPosition(0,0);
+    if (w.Create())
+    {
+        w.Show ();
+        Application ().Start();
+    }
+}
+
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE, char* cmdLine, int showStyle)
+{
+    DrawingWindowTest(hInstance, showStyle);
+    // SimpleWindowTest(hInstance, showStyle);
+
 }

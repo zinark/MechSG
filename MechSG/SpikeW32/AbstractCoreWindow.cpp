@@ -76,7 +76,6 @@ LRESULT CALLBACK AbstractCoreWindow::MessageRouter( HWND hWnd, UINT message, WPA
     if (message == WM_NCCREATE)
     {
         SetWindowLong (hWnd, GWL_USERDATA, long (((LPCREATESTRUCT) lParam)->lpCreateParams));
-        
     }
     window = (AbstractCoreWindow*) (GetWindowLong (hWnd, GWL_USERDATA));
     
@@ -85,6 +84,4 @@ LRESULT CALLBACK AbstractCoreWindow::MessageRouter( HWND hWnd, UINT message, WPA
         window->WindowProcedure(hWnd, message, wParam, lParam);
     }
     return DefWindowProc (hWnd, message, wParam, lParam);
-        
-    
 }
