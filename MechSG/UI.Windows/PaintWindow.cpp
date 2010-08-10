@@ -1,6 +1,8 @@
 #include "PaintWindow.h"
+#include <string>
 using namespace UI::Core;
 using namespace UI::Windows;
+using namespace std;
 
 void PaintWindow::OnWindowCreated()
 {
@@ -21,3 +23,9 @@ void PaintWindow::OnKeyPressed( unsigned short keyCode )
 }
 
 
+
+void UI::Windows::PaintWindow::OnPaint( const HDC& hdc )
+{
+    string msg = "Press ESC to destroy Application";
+    TextOut (hdc, 10, 10, msg.c_str(), msg.length());
+}

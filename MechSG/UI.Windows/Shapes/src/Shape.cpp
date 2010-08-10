@@ -25,3 +25,13 @@ void Shape::SetEndPoint( const POINT& point )
 {
     _EndPoint = point;
 }
+
+void UI::Windows::Shapes::Shape::SetPen( const LOGPEN& pen )
+{
+    _HandlePen = CreatePenIndirect(&pen);
+}
+
+void UI::Windows::Shapes::Shape::SetBrush( const LOGBRUSH& brush )
+{
+    _HandleBrush = CreateBrushIndirect(&brush);
+}

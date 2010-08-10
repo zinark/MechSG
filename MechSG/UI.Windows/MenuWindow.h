@@ -1,7 +1,6 @@
 #pragma once
 #include <Windows.h>
 #include <vector>
-
 #include "AbstractWindow.h"
 #include "Shapes/inc/Shape.h"
 using namespace std;
@@ -12,6 +11,7 @@ namespace UI { namespace Windows
 {
     class MenuWindow : public AbstractWindow
     {
+    
     private:
         vector<Shape*> _Shapes;
         Shape* _CurrentShape;
@@ -20,6 +20,20 @@ namespace UI { namespace Windows
         POINT _EndPoint;
         LOGBRUSH _SelectedBrush;
         LOGPEN _SelectedPen;
+
+        unsigned int 
+            _LastShapeID,
+            _LastPenColorID,
+            _LastPenStyleID,
+            _LastBrushColorID,
+            _LastBrushStyleID;
+
+        COLORREF
+            _ColorRed, _ColorBlack;
+
+        void InitDrawingDefaults();
+
+        bool _GhostShapeVisible;
 
     public:
         MenuWindow(const HINSTANCE& hInst, const int& showStyle);
@@ -33,5 +47,6 @@ namespace UI { namespace Windows
         void OnMousePressed(int x, int y, MouseButton mouseButton);
         void OnMouseMove(int x, int y);
         void OnMouseReleased(int x, int y, MouseButton mouseButton);
+        void OnPaint(const HDC& hdc);
     };
 }}

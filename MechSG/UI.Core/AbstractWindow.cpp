@@ -95,3 +95,8 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
     return DefWindowProc (hWnd, message, wParam, lParam);
 }
 
+
+void AbstractWindow::RePaint( const bool& drawBackground )
+{
+    InvalidateRect(_HWnd, 0, drawBackground );
+}

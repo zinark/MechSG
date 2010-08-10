@@ -16,6 +16,8 @@ namespace UI { namespace Windows { namespace Shapes {
         virtual ~Shape ();
         void SetStartPoint (const POINT& point);
         void SetEndPoint (const POINT& point);
+        void SetPen (const LOGPEN& pen);
+        void SetBrush (const LOGBRUSH& brush);
         virtual void Draw (const HDC& hdc) = 0;
     };
 

@@ -14,5 +14,6 @@ namespace UI { namespace Windows
     protected:
         void OnWindowCreated ();
         void OnKeyPressed(unsigned short keyCode);
+        void OnPaint(const HDC& hdc);
     };
 }}

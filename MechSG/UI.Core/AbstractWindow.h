@@ -34,6 +34,8 @@ namespace UI { namespace Core
         virtual void OnPaint (const HDC& hdc) {}
         virtual void OnWindowClose () {};
         virtual void OnMenuCommand (unsigned short parameter) {}
+
+        void RePaint (const bool& drawBackground);
     };
 }
 }
