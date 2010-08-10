@@ -1,8 +1,8 @@
 #pragma once
 #include <Windows.h>
-#include <vector>
 #include "AbstractWindow.h"
 #include "Shapes/inc/Shape.h"
+#include <deque>
 using namespace std;
 using namespace UI::Core;
 using namespace UI::Windows::Shapes;
@@ -13,7 +13,7 @@ namespace UI { namespace Windows
     {
     
     private:
-        vector<Shape*> _Shapes;
+        deque<Shape*> _Shapes;
         Shape* _CurrentShape;
         
         POINT _StartPoint;

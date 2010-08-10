@@ -3,6 +3,7 @@
 #include "Shapes/inc/LineShape.h"
 #include "Shapes/inc/EllipseShape.h"
 #include "Shapes/inc/RectangleShape.h"
+#include "Shapes/inc/CubeShape.h"
 
 using namespace UI::Core;
 using namespace UI::Windows;
@@ -90,6 +91,14 @@ void MenuWindow::OnMenuCommand( unsigned short parameter )
     {
         CheckMenuItem(_HMenu, _LastShapeID, MF_UNCHECKED);
         CheckMenuItem(_HMenu, parameter, MF_CHECKED);
+        _LastShapeID = parameter;
+        return;
+    }
+
+    if (parameter == ID_SHAPES_CUBE)
+    {
+        CheckMenuItem (_HMenu, _LastShapeID, MF_UNCHECKED);
+        CheckMenuItem (_HMenu, parameter, MF_CHECKED);
         _LastShapeID = parameter;
         return;
     }
@@ -200,6 +209,19 @@ void MenuWindow::OnMenuCommand( unsigned short parameter )
         return;
     }
 
+    // FILE
+
+    if (parameter == ID_FILE_UNDO)
+    {
+        if (_Shapes.size() <= 0) return;
+        
+        _Shapes.pop_back();
+        _CurrentShape = 0;
+        
+        InvalidateRect(_HWnd, 0, true);
+        return;
+    }
+
 }
 
 void MenuWindow::OnMousePressed( int x, int y, MouseButton mouseButton )
@@ -219,6 +241,11 @@ void MenuWindow::OnMousePressed( int x, int y, MouseButton mouseButton )
     if (_LastShapeID == ID_SHAPES_RECTANGLE)
     {
         _CurrentShape = new RectangleShape (_StartPoint, _EndPoint, _SelectedPen, _SelectedBrush);
+    }
+
+    if (_LastShapeID == ID_SHAPES_CUBE)
+    {
+        _CurrentShape = new CubeShape (_StartPoint, _EndPoint, _SelectedPen, _SelectedBrush);
     }
 
     SetCapture (_HWnd);
@@ -268,6 +295,7 @@ void MenuWindow::OnPaint( const HDC& hdc )
         _Shapes[i]->Draw(hdc);
     }
     
-    _CurrentShape->Draw(hdc);
+    if (_CurrentShape != 0)
+        _CurrentShape->Draw(hdc);
 }
 
