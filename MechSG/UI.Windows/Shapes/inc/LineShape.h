@@ -1,7 +1,7 @@
 #include "Shape.h"
-using namespace UI::Core::Shapes;
+using namespace UI::Windows::Shapes;
 
-namespace UI { namespace Core { namespace Shapes { 
+namespace UI { namespace Windows { namespace Shapes { 
 
     class LineShape : public Shape
     {

@@ -3,6 +3,7 @@ using namespace UI::Core;
 
 AbstractWindow::AbstractWindow( const HINSTANCE& hInst, const int& showStyle ) : AbstractCoreWindow (hInst, showStyle)
 {
+    // _CallbackRegistry.Register (WM_NCCREATE, OnWindowCreated);
 }
 
 AbstractWindow::~AbstractWindow(void)
@@ -11,10 +12,12 @@ AbstractWindow::~AbstractWindow(void)
 
 LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
+    // _CallbackRegistry.Check (hWnd, message, wParam, lParam);
+    
     if (message == WM_NCCREATE)
     {
         OnWindowCreated();
-        return 0;
+        return DefWindowProc (hWnd, message, wParam, lParam);
     }
 
     if (message == WM_DESTROY)
@@ -26,6 +29,7 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
     if (message == WM_KEYDOWN)
     {
         OnKeyPressed(wParam);
+        return 0;
     }
 
     if (message == WM_LBUTTONDOWN)
@@ -82,6 +86,12 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
         return 0;
     }
 
-    return 0;
+    if (message == WM_CLOSE)
+    {
+        OnWindowClose ();
+        return 0;
+    }
+
+    return DefWindowProc (hWnd, message, wParam, lParam);
 }
 

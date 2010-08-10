@@ -1,6 +1,6 @@
 #include "Shape.h"
 
-namespace UI { namespace Core { namespace Shapes { 
+namespace UI { namespace Windows { namespace Shapes { 
 
     class EllipseShape : public Shape
     {

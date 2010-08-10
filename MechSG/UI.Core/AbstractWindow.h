@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractCoreWindow.h"
 #include <Windows.h>
+#include "CallbackRegistry.h"
 using namespace UI::Core;
 
 namespace UI { namespace Core
@@ -12,6 +13,9 @@ namespace UI { namespace Core
 
     class AbstractWindow : public AbstractCoreWindow
     {
+    private:
+        // CallbackRegistry _CallbackRegistry;
+    
     public:
         AbstractWindow (const HINSTANCE& hInst, const int& showStyle);
         virtual ~AbstractWindow(void);
@@ -23,12 +27,13 @@ namespace UI { namespace Core
         virtual void OnWindowCreated () = 0;
         virtual void OnWindowDestroyed () {}
 
-        virtual void OnKeyPressed (unsigned int keyCode) {}
+        virtual void OnKeyPressed (unsigned short keyCode) {}
         virtual void OnMousePressed (int x, int y, MouseButton mouseButton) {}
         virtual void OnMouseReleased (int x, int y, MouseButton mouseButton) {}
         virtual void OnMouseMove (int x, int y)  {}
         virtual void OnPaint (const HDC& hdc) {}
-        virtual void OnMenuCommand (unsigned int parameter) {}
+        virtual void OnWindowClose () {};
+        virtual void OnMenuCommand (unsigned short parameter) {}
     };
 }
 }

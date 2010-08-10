@@ -19,7 +19,7 @@ AbstractWindow* CreatePaintWindow (const HINSTANCE& hInstance, const int& showSt
     
     LOGBRUSH logBrush;
     logBrush.lbStyle = BS_SOLID;
-    logBrush.lbColor = RGB (120, 120, 160);
+    logBrush.lbColor = RGB (200, 180, 180);
     win->SetBackgroundColor(logBrush);
     
     return win;

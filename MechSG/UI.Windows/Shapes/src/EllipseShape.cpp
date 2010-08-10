@@ -1,6 +1,6 @@
 #include "../inc/EllipseShape.h"
 
-using namespace UI::Core::Shapes;
+using namespace UI::Windows::Shapes;
 
 EllipseShape::EllipseShape( const POINT& start, const POINT& end, const LOGPEN& pen, const LOGBRUSH& brush )
     : Shape (start, end, pen, brush)

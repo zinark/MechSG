@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-namespace UI { namespace Core { namespace Shapes { 
+namespace UI { namespace Windows { namespace Shapes { 
     
     class Shape
     {

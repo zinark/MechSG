@@ -7,7 +7,7 @@ namespace UI { namespace Core {
     protected:
         HINSTANCE _HInstance;
         HWND _HWnd;
-        HMENU _Menu;
+        HMENU _HMenu;
 
         int GetWidth () { return _Width;}
         int GetHeight () { return _Height;}

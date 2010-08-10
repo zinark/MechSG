@@ -12,7 +12,7 @@ PaintWindow::~PaintWindow(void)
 
 }
 
-void PaintWindow::OnKeyPressed( unsigned int keyCode )
+void PaintWindow::OnKeyPressed( unsigned short keyCode )
 {
     if (MessageBox (_HWnd, "Do you quit?", "Quit", MB_YESNO) == IDYES)
     {

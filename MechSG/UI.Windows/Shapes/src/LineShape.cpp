@@ -1,6 +1,6 @@
 #include "../inc/LineShape.h"
 
-using namespace UI::Core::Shapes;
+using namespace UI::Windows::Shapes;
 
 LineShape::LineShape( const POINT& start, const POINT& end, const LOGPEN& pen, const LOGBRUSH& brush )
     : Shape (start, end, pen, brush)

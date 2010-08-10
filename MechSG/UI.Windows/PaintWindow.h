@@ -13,6 +13,6 @@ namespace UI { namespace Windows
 
     protected:
         void OnWindowCreated ();
-        void OnKeyPressed(unsigned int keyCode);
+        void OnKeyPressed(unsigned short keyCode);
     };
 }}

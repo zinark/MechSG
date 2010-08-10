@@ -1,6 +1,6 @@
 #include "../inc/Shape.h"
 
-using namespace UI::Core::Shapes;
+using namespace UI::Windows::Shapes;
 
 Shape::Shape( const POINT& start, const POINT& end, const LOGPEN& pen, const LOGBRUSH& brush )
 {
@@ -10,18 +10,18 @@ Shape::Shape( const POINT& start, const POINT& end, const LOGPEN& pen, const LOG
     _HandleBrush = CreateBrushIndirect(&brush);
 }
 
-UI::Core::Shapes::Shape::~Shape()
+Shape::~Shape()
 {
     DeleteObject (_HandlePen);
     DeleteObject (_HandleBrush);
 }
 
-void UI::Core::Shapes::Shape::SetStartPoint( const POINT& point )
+void Shape::SetStartPoint( const POINT& point )
 {
     _StartPoint = point;
 }
 
-void UI::Core::Shapes::Shape::SetEndPoint( const POINT& point )
+void Shape::SetEndPoint( const POINT& point )
 {
     _EndPoint = point;
 }
