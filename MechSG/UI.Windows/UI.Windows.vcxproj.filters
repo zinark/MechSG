@@ -36,6 +36,9 @@
     <ClInclude Include="Shapes\inc\CubeShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DialogWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PaintWindow.cpp">
@@ -57,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Shapes\src\CubeShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

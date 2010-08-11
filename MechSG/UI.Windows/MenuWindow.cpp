@@ -221,7 +221,6 @@ void MenuWindow::OnMenuCommand( unsigned short parameter )
         InvalidateRect(_HWnd, 0, true);
         return;
     }
-
 }
 
 void MenuWindow::OnMousePressed( int x, int y, MouseButton mouseButton )
