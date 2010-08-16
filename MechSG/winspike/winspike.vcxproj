@@ -60,11 +60,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DialogComboBox.cpp" />
     <ClCompile Include="DialogEnterText.cpp" />
     <ClCompile Include="DialogTestRadios.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DialogComboBox.h" />
     <ClInclude Include="DialogEnterText.h" />
     <ClInclude Include="DialogTestRadios.h" />
     <ClInclude Include="resource.h" />
