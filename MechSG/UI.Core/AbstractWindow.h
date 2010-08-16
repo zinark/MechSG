@@ -1,7 +1,6 @@
 #pragma once
 #include "AbstractCoreWindow.h"
 #include <Windows.h>
-#include "CallbackRegistry.h"
 using namespace UI::Core;
 
 namespace UI { namespace Core

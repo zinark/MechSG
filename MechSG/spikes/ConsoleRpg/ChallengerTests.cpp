@@ -8,6 +8,65 @@
 using namespace CRPG;
 using namespace std;
 
+template <typename T>
+class CustomList
+{
+private:
+    std::list<T> mList;
+
+public:
+    void Add (const T& toAdd)
+    {
+        list<T>::iterator iterator;
+        for (iterator = mList.begin(); iterator != mList.end(); ++iterator)
+        {
+            if (*iterator > toAdd)
+            {
+                cout << "inserted" << *iterator << " > " << toAdd << endl;
+                mList.insert(iterator, toAdd);
+                return;
+            }
+        }
+
+        mList.push_back(toAdd);
+    }
+
+    void PrintAll ()
+    {
+        for (auto iterator = mList.begin(); iterator != mList.end(); ++iterator)
+        {
+            cout << *iterator << endl;
+        }
+    }
+
+    T& GetItem (int order)
+    {
+        T result = T();
+
+        int index = 0;
+        for (auto iterator = mList.begin(); iterator != mList.end(); ++iterator)
+        {
+            if (index == order)
+                return *iterator;
+            ++index;
+
+        }
+        return result;
+    }
+};
+
+TEST (CustomSortedList, Add_WhenAdd12_ToSorted3ItemedArray_ElementLocatesIn2thOrder)
+{
+    CustomList<int> theList;
+    theList.Add(0);
+    theList.Add(10);
+    theList.Add(20);
+
+    theList.Add(12);
+
+    EXPECT_EQ (12, theList.GetItem (2));
+}
+
 TEST (Challenger, PlayerIsAChallenger)
 {
     IChallenger* challenger = new Player ("P1");

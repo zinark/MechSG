@@ -1,0 +1,56 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:AbstractWindow.h" caret="69" fromTop="2" />
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:AbstractCoreWindow.cpp" caret="0" fromTop="0" />
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:AbstractWindow.cpp" caret="658" fromTop="6" />
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:AbstractCoreWindow.h" caret="106" fromTop="4" />
+      <File id="E50FF202-4DAA-4AD7-ABCC-3D68B20A568C/f:Main.cpp" caret="0" fromTop="0" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:resource.h" caret="2223" fromTop="53" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.cpp" caret="65" fromTop="5" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.h" caret="218" fromTop="0" />
+      <File id="07CD09EE-96FD-42A6-B07A-D4B6D9D2931D/f:DialogWindow.cpp" caret="284" fromTop="7" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="284" fromTop="0" />
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:Application.cpp" caret="339" fromTop="21" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="228" fromTop="9" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="68306213-7760-40E4-954D-C28EEE1F75D9/f:AbstractWindow.h" caret="69" fromTop="2" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="873" fromTop="15" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="494" fromTop="18" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="405" fromTop="15" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="718" fromTop="42" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.h" caret="293" fromTop="6" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.h" caret="1823" fromTop="33" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.h" caret="161" fromTop="5" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="115" fromTop="4" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:CaseWindow.h" caret="218" fromTop="9" />
+      <File id="1058C097-F042-4F16-9843-11095AAFF39F/f:Main.cpp" caret="196" fromTop="8" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="45" fromTop="1" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="892" fromTop="17" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="433" fromTop="13" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="1037" fromTop="33" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="836" fromTop="25" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="353" fromTop="9" />
+      <File id="83FFB2AC-8151-4A7A-B000-F790FF915B78/f:Main.cpp" caret="619" fromTop="24" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

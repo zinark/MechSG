@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{07CD09EE-96FD-42A6-B07A-D4B6D9D2931D}</ProjectGuid>
-    <RootNamespace>UIWindows</RootNamespace>
+    <ProjectGuid>{83FFB2AC-8151-4A7A-B000-F790FF915B78}</ProjectGuid>
+    <RootNamespace>winspike</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -36,9 +36,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../UI.Core;$(IncludePath)</IncludePath>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -47,9 +45,6 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -65,29 +60,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DialogWindow.h" />
-    <ClInclude Include="MenuWindow.h" />
-    <ClInclude Include="PaintWindow.h" />
-    <ClInclude Include="Shapes\inc\CubeShape.h" />
-    <ClInclude Include="Shapes\inc\EllipseShape.h" />
-    <ClInclude Include="Shapes\inc\LineShape.h" />
-    <ClInclude Include="Shapes\inc\RectangleShape.h" />
-    <ClInclude Include="Shapes\inc\Shape.h" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DialogWindow.cpp" />
-    <ClCompile Include="MenuWindow.cpp" />
-    <ClCompile Include="PaintWindow.cpp" />
-    <ClCompile Include="Shapes\src\CubeShape.cpp" />
-    <ClCompile Include="Shapes\src\EllipseShape.cpp" />
-    <ClCompile Include="Shapes\src\LineShape.cpp" />
-    <ClCompile Include="Shapes\src\RectangleShape.cpp" />
-    <ClCompile Include="Shapes\src\Shape.cpp" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UI.Core\UI.Core.vcxproj">
-      <Project>{68306213-7760-40e4-954d-c28eee1f75d9}</Project>
-    </ProjectReference>
+    <ResourceCompile Include="winspike.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

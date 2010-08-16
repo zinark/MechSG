@@ -78,13 +78,11 @@
     <ClInclude Include="AbstractCoreWindow.h" />
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="CallbackRegistry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractCoreWindow.cpp" />
     <ClCompile Include="AbstractWindow.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="CallbackRegistry.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
