@@ -1,6 +1,7 @@
 #include "PerformanceWindow.h"
 #include <iostream>
 #include <sstream>
+#include <AbstractWindow.h>
 using namespace std;
 
 PerformanceWindow::PerformanceWindow(const HINSTANCE& hInst, const int& showStyle)

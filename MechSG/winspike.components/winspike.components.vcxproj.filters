@@ -15,21 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="winspiketests.cpp">
+    <ClCompile Include="BackBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\TimersTests.cpp">
+    <ClCompile Include="Performance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerformanceTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tests\BackBufferTests.cpp">
+    <ClCompile Include="PerformanceWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PerformanceTimer.h">
+    <ClInclude Include="BackBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformanceWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Performance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

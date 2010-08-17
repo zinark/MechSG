@@ -37,7 +37,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../winspike;../Lib;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <IncludePath>../winspike.components;../winspike;../Lib;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>../Lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
@@ -47,6 +47,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -68,16 +70,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PerformanceTimer.cpp" />
+    <ClCompile Include="Tests\BackBufferTests.cpp" />
     <ClCompile Include="Tests\TimersTests.cpp" />
     <ClCompile Include="winspiketests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PerformanceTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UI.Core\UI.Core.vcxproj">
+      <Project>{68306213-7760-40e4-954d-c28eee1f75d9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\winspike.components\winspike.components.vcxproj">
+      <Project>{b2e93b6c-575d-41c0-99dc-955ebca1a035}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\winspike\winspike.vcxproj">
       <Project>{83ffb2ac-8151-4a7a-b000-f790ff915b78}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="PerformanceTimer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
