@@ -43,6 +43,7 @@ namespace UI { namespace Core {
 		void SetBackgroundColor (const LOGBRUSH& brush);
 		void SetMenu (const HMENU& menu);
 		void SetMouseState (bool state);
+		void ToFullScreen ();
 		bool Create ();
 		void Show ();
 

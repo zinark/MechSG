@@ -37,6 +37,7 @@ void PerformanceWindow::OnKeyPressed( unsigned short keyCode )
 
 void PerformanceWindow::DrawScene( double deltaTime )
 {
+	static int verticalPos;
 	_FrameCount++;
 	_ElapsedTime += deltaTime;
 
@@ -47,23 +48,31 @@ void PerformanceWindow::DrawScene( double deltaTime )
 	// ENTITIES
 	int width = 40;
 	int height= 40;
-	int offset = _FrameCount % 10;
-	
-	auto oldPen = SelectObject(hdc, GetStockObject(WHITE_PEN));
-	auto oldBrush = SelectObject(hdc, GetStockObject(BLACK_BRUSH));
+	int offset = verticalPos % 40;
+
 	for (int i=-1; i<40; i++)
 	{
 		for (int j=-1; j<20; j++)
 		{
+			auto oldPen = SelectObject(hdc, GetStockObject(WHITE_PEN));
+			auto oldBrush = SelectObject(hdc, GetStockObject(BLACK_BRUSH));
+
 			Rectangle (hdc, 
 				i*width + offset,
 				j*height + offset,
 				i*width + offset + width, 
 				j*height + offset + height);
+			
+			SelectObject(hdc, oldPen);
+			SelectObject(hdc, oldBrush);
 		}
 	}
-	SelectObject(hdc, oldPen);
-	SelectObject(hdc, oldBrush);
+
+	// PAD
+	Rectangle (hdc, 0, verticalPos, GetWidth (), verticalPos+10);
+	if (verticalPos <= GetHeight()) ++verticalPos;
+	else
+		verticalPos = 0;
 
 	// CURSOR
 	int range = 10;
@@ -71,8 +80,8 @@ void PerformanceWindow::DrawScene( double deltaTime )
 	int quantity = 5;
 	for (int i= -quantity; i <= quantity; i++)
 	{
-		int sx = i*5 + _FrameCount % 4, 
-			sy = i*5 + _FrameCount % 4;
+		int sx = i*5 + _FrameCount % quantity, 
+			sy = i*5 + _FrameCount % quantity;
 		Ellipse (hdc, 
 			_MouseX-2+sx, _MouseY-2+sy,
 			_MouseX+2+sx, _MouseY+2+sy);
