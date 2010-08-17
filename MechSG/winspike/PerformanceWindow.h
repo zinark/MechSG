@@ -10,12 +10,12 @@ class PerformanceWindow : public AbstractWindow
 private:
 	wstring _FpsString;
 	int _FrameCount;
-	float _ElapsedTime;
+	double _ElapsedTime;
 public:
 	PerformanceWindow(const HINSTANCE& hInst, const int& showStyle);
 	~PerformanceWindow(void);
 	void OnWindowCreated();
 	void OnKeyPressed(unsigned short keyCode);
-	void DrawScene (float deltaTime);
+	void DrawScene (double deltaTime);
 };
 

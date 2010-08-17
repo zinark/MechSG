@@ -13,7 +13,6 @@ PerformanceWindow::PerformanceWindow(const HINSTANCE& hInst, const int& showStyl
 	_FrameCount = 0;
 	_ElapsedTime = 0;
 	_FpsString = L"Init...";
-
 }
 
 PerformanceWindow::~PerformanceWindow(void)
@@ -32,9 +31,9 @@ void PerformanceWindow::OnKeyPressed( unsigned short keyCode )
 	}
 }
 
-void PerformanceWindow::DrawScene( float deltaTime )
+void PerformanceWindow::DrawScene( double deltaTime )
 {
-	SetTitle(_FpsString.c_str());
+	
 	_FrameCount++;
 	_ElapsedTime += deltaTime;
 
@@ -47,4 +46,6 @@ void PerformanceWindow::DrawScene( float deltaTime )
 		_FrameCount = 0;
 		_ElapsedTime = 0;
 	}
+
+	SetTitle(_FpsString.c_str());
 }

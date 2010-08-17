@@ -10,10 +10,13 @@ AbstractCoreWindow::AbstractCoreWindow( const HINSTANCE& appInstanceHandle, cons
 	_X = 0;
 	_Y = 0;
 	_HMenu = 0;
+	
 	LOGBRUSH defaultBrush;
 	defaultBrush.lbColor = RGB (50,50,50);
-	defaultBrush.lbStyle = BS_SOLID;
+	defaultBrush.lbStyle = BS_NULL;
 	_BackgroundBrush = defaultBrush;
+	
+	
 	_Width = 800;
 	_Height = 600;
 	_HInstance = appInstanceHandle;

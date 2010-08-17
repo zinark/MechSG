@@ -21,28 +21,36 @@ public:
 	}
 };
 
-static float lastTime = 0;
-PerformanceWindow* performanceWindow = 0;
 
 class OnApplicationIdleAction : public ApplicationAction
 {
+private:
+	double lastTime;
+	PerformanceWindow* _PerformanceWindow;
+
 public:
+	OnApplicationIdleAction (PerformanceWindow* performanceWindow)
+	{
+		lastTime = 0;
+		_PerformanceWindow = performanceWindow;
+	}
+
 	void operator () ()
 	{
-		float currentTime = Performance ().GetTime();
-		float deltaTime = (currentTime - lastTime) * 0.001f;
+		double currentTime = Performance ().GetTimeInSeconds();
+		double deltaTime = (currentTime - lastTime);
 		lastTime = currentTime;
-		performanceWindow->DrawScene (deltaTime);
+		_PerformanceWindow->DrawScene (deltaTime);
 	}
 };
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
-	performanceWindow = new PerformanceWindow (hInstance, showStyle);
+	PerformanceWindow* performanceWindow = new PerformanceWindow (hInstance, showStyle);
 	if (performanceWindow->Create())
 	{
 		performanceWindow->Show();
 	}
 
-	Application ().Start(OnApplicationIdleAction ());
+	Application ().Start(OnApplicationIdleAction (performanceWindow));
 }
