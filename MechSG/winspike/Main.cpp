@@ -8,6 +8,7 @@
 #include "PerformanceWindow.h"
 #include <Application.h>
 #include "Performance.h"
+#include "BackBuffer.h"
 using namespace std;
 
 class DialogFacade
@@ -39,8 +40,9 @@ public:
 	{
 		double currentTime = Performance ().GetTimeInSeconds();
 		double deltaTime = (currentTime - lastTime);
-		lastTime = currentTime;
 		_PerformanceWindow->DrawScene (deltaTime);
+		lastTime = currentTime;
+		Sleep (15);
 	}
 };
 

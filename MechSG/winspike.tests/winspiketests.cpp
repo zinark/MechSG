@@ -8,6 +8,6 @@ int main (int argc, char** argv)
 {
 	InitGoogleTest (&argc, argv);
 	RUN_ALL_TESTS ();
-	int x;
-	cin >> x;
+	//int x;
+	//cin >> x;
 }

@@ -101,3 +101,8 @@ void AbstractCoreWindow::SetMenu( const HMENU& menu )
 {
 	_HMenu = menu;
 }
+
+void AbstractCoreWindow::SetMouseState (bool state)
+{
+	ShowCursor(state);
+}

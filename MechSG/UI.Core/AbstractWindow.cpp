@@ -14,9 +14,10 @@ LRESULT CALLBACK AbstractWindow::WindowProcedure( HWND hWnd, UINT message, WPARA
 {
     // _CallbackRegistry.Check (hWnd, message, wParam, lParam);
     
-    if (message == WM_NCCREATE)
+	if (message == WM_NCCREATE)
     {
-        OnWindowCreated();
+		_HWnd = hWnd;
+		OnWindowCreated();
         return DefWindowProc (hWnd, message, wParam, lParam);
     }
 

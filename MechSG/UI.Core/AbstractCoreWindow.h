@@ -42,6 +42,7 @@ namespace UI { namespace Core {
 		void SetName (const WCHAR* name );
 		void SetBackgroundColor (const LOGBRUSH& brush);
 		void SetMenu (const HMENU& menu);
+		void SetMouseState (bool state);
 		bool Create ();
 		void Show ();
 

@@ -37,14 +37,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../Ui.Core;../Lib;$(IncludePath)</IncludePath>
+    <IncludePath>../winspike.components;../Ui.Core;../Lib;$(IncludePath)</IncludePath>
     <LibraryPath>../Lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -71,15 +71,11 @@
     <ClCompile Include="DialogEnterText.cpp" />
     <ClCompile Include="DialogTestRadios.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Performance.cpp" />
-    <ClCompile Include="PerformanceWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DialogComboBox.h" />
     <ClInclude Include="DialogEnterText.h" />
     <ClInclude Include="DialogTestRadios.h" />
-    <ClInclude Include="Performance.h" />
-    <ClInclude Include="PerformanceWindow.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +84,9 @@
   <ItemGroup>
     <ProjectReference Include="..\UI.Core\UI.Core.vcxproj">
       <Project>{68306213-7760-40e4-954d-c28eee1f75d9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\winspike.components\winspike.components.vcxproj">
+      <Project>{b2e93b6c-575d-41c0-99dc-955ebca1a035}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
