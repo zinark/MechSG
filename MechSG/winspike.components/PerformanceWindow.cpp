@@ -3,6 +3,9 @@
 #include <sstream>
 #include <AbstractWindow.h>
 #include "../winspike/resource.h"
+#include "../winspike/Sprite.h"
+#include "../winspike/Vectoric.h"
+
 using namespace std;
 
 
@@ -17,11 +20,14 @@ PerformanceWindow::PerformanceWindow(const HINSTANCE& hInst, const int& showStyl
 	_ElapsedTime = 0;
 	_FpsString = L"Init...";
 	SetMouseState(false);
+	_Fighter = new Sprite (GetHInstance(), IDB_F16, IDB_F16_MASK);
+	_Fighter->SetVectors (Vectoric (1,1,0), Vectoric(100,100,0));
 }
 
 PerformanceWindow::~PerformanceWindow(void)
 {
 	delete _BackBuffer;
+	delete _Fighter;
 }
 
 void PerformanceWindow::OnWindowCreated()
@@ -39,7 +45,7 @@ void PerformanceWindow::OnKeyPressed( unsigned short keyCode )
 
 void PerformanceWindow::DrawScene( double deltaTime )
 {
-	
+
 	_FrameCount++;
 	_ElapsedTime += deltaTime;
 
@@ -88,7 +94,7 @@ void PerformanceWindow::DrawingProcedure()
 {
 	static int verticalPos;
 	HDC hdc = _BackBuffer->GetDeviceContext();
-	
+
 	// CLEAN
 	LOGBRUSH log;
 	log.lbStyle = BS_SOLID;
@@ -105,6 +111,9 @@ void PerformanceWindow::DrawingProcedure()
 	ReleaseDC(GetHWnd(), bgDc);
 	DeleteObject (hBg);
 	DeleteDC(bgDc);
+
+
+
 
 	// ENTITIES
 	int width = 40;
@@ -146,7 +155,7 @@ void PerformanceWindow::DrawingProcedure()
 	HBITMAP hWolf2 = LoadBitmap (GetHInstance(), MAKEINTRESOURCE (IDB_WWOLF02));
 	HBITMAP hWolf3 = LoadBitmap (GetHInstance(), MAKEINTRESOURCE (IDB_WWOLF03));
 	HDC pdc = CreateCompatibleDC(hdc);
-	
+
 	HGDIOBJ oldWolf;
 	int animTime = verticalPos % 60;
 	if (animTime >= 0 && animTime <=10) oldWolf = SelectObject (pdc, hWolf);
@@ -155,19 +164,27 @@ void PerformanceWindow::DrawingProcedure()
 	if (animTime >= 30 && animTime <=40) oldWolf = SelectObject (pdc, hWolf3);
 	if (animTime >= 40 && animTime <=50) oldWolf = SelectObject (pdc, hWolf2);
 	if (animTime >= 50 && animTime <=60) oldWolf = SelectObject (pdc, hWolf);
-	
-	
-	for (int i=0; i<6; i++)
-	{
-		BitBlt (hdc, 25 + i*100,25+i*100, 100, 100, pdc, 0,0, SRCCOPY);
-	}
-	
+
+
+	BitBlt (hdc, 25,25, 100, 100, pdc, 0,0, SRCCOPY);
+
 	SelectObject(pdc, oldWolf);
 	ReleaseDC(GetHWnd(), pdc);
 	DeleteObject (hWolf);
 	DeleteObject (hWolf2);
 	DeleteObject (hWolf3);
 	DeleteDC (pdc);
+
+
+	// FIGHTER STRUCTURE
+	_Fighter->UpdatePosition (0.05f);
+	_Fighter->Draw(hdc);
+
+	_Fighter->SetVelocity(Vectoric(
+		_MouseX - _Fighter->GetWidth() / 2 - _Fighter->GetPosition().GetX(), 
+		_MouseY - _Fighter->GetHeight() / 2 - _Fighter->GetPosition().GetY(), 
+		0));
+
 
 	// CURSOR
 	int range = 10;
@@ -188,6 +205,7 @@ void PerformanceWindow::DrawingProcedure()
 	}
 
 	Ellipse (hdc, _MouseX-4, _MouseY-4,_MouseX+4, _MouseY+4 );
+
 
 	_BackBuffer->Draw();
 }

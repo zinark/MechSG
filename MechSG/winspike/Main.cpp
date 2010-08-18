@@ -64,7 +64,7 @@ bool ChangeResolution(int width, int height, int bpp)
 	devMode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL;
 	if (ChangeDisplaySettings (&devMode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
 	{
-		// MessageBox (0, stream.str().c_str(), "DEVMODE", MB_OK);		
+		// MessageBox (0, stream.str().c_str(), "DEVMODE", MB_OK);
 		MessageBox (0, "Resolution error.", "Error", MB_OK);
 		return false;
 	}

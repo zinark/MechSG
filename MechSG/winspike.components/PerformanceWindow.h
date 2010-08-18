@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../UI.Core/AbstractWindow.h"
 #include "BackBuffer.h"
+#include <../winspike/Sprite.h>
 
 using namespace std;
 using namespace UI::Core;
@@ -16,6 +17,7 @@ private:
 	BackBuffer* _BackBuffer;
 	int _MouseX, _MouseY;
 	void DrawingProcedure();
+	Sprite* _Fighter;
 
 public:
 	PerformanceWindow(const HINSTANCE& hInst, const int& showStyle);

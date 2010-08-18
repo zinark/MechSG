@@ -71,12 +71,16 @@
     <ClCompile Include="DialogEnterText.cpp" />
     <ClCompile Include="DialogTestRadios.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Vectoric.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DialogComboBox.h" />
     <ClInclude Include="DialogEnterText.h" />
     <ClInclude Include="DialogTestRadios.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Vectoric.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="winspike.rc" />
@@ -90,6 +94,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\2D Circle Graphic\Aircraft Sprites\Top View\Su-37K-Map.bmp" />
+    <None Include="..\..\..\..\2D Circle Graphic\Aircraft Sprites\Top View\Su-37K.bmp" />
     <None Include="..\..\..\..\2d circle graphic\bitmap1.bmp" />
     <None Include="..\..\..\..\2D Circle Graphic\TEST7B.bmp" />
     <None Include="..\..\..\..\2D Circle Graphic\Werewolf-01.bmp" />
