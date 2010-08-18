@@ -43,13 +43,18 @@ namespace UI { namespace Core {
 		void SetBackgroundColor (const LOGBRUSH& brush);
 		void SetMenu (const HMENU& menu);
 		void SetMouseState (bool state);
-		void ToFullScreen ();
+		void ToBorderless ();
 		bool Create ();
 		void Show ();
 
 		HWND& GetHWnd ()
 		{
 			return _HWnd;
+		}
+
+		HINSTANCE GetHInstance ()
+		{
+			return _HInstance;
 		}
 
 	};

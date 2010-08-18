@@ -15,6 +15,8 @@ private:
 	double _ElapsedTime;
 	BackBuffer* _BackBuffer;
 	int _MouseX, _MouseY;
+	void DrawingProcedure();
+
 public:
 	PerformanceWindow(const HINSTANCE& hInst, const int& showStyle);
 	~PerformanceWindow(void);
@@ -22,5 +24,8 @@ public:
 	void OnKeyPressed(unsigned short keyCode);
 	void OnMouseMove(int x, int y);
 	void DrawScene (double deltaTime);
+
+	
+
 };
 

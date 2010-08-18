@@ -37,6 +37,9 @@ void DialogBasedTest( HINSTANCE hInstance, int showStyle )
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
-	DialogBasedTest (hInstance, showStyle);
+	// DialogBasedTest (hInstance, showStyle);
+	CaseWindow ().CreateWindows(hInstance, showStyle);
+	Application().Start();
+	
 }
 

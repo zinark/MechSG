@@ -47,4 +47,18 @@
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\2D Circle Graphic\Werewolf-01.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\2D Circle Graphic\Werewolf-02.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\2D Circle Graphic\Werewolf-03.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\2d circle graphic\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

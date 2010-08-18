@@ -2,7 +2,9 @@
 #include <iostream>
 #include <sstream>
 #include <AbstractWindow.h>
+#include "../winspike/resource.h"
 using namespace std;
+
 
 PerformanceWindow::PerformanceWindow(const HINSTANCE& hInst, const int& showStyle)
 	: AbstractWindow (hInst, showStyle)
@@ -37,32 +39,87 @@ void PerformanceWindow::OnKeyPressed( unsigned short keyCode )
 
 void PerformanceWindow::DrawScene( double deltaTime )
 {
-	static int verticalPos;
+	
 	_FrameCount++;
 	_ElapsedTime += deltaTime;
 
+	//HDC hdc = GetDC (GetHWnd());
+	//HDC panelDc = CreateCompatibleDC(hdc);
+
+	//HBITMAP surface = CreateCompatibleBitmap(hdc, GetWidth(), GetHeight());
+	//SelectObject (panelDc, surface);
+
+	//LOGBRUSH log;
+	//log.lbColor = RGB (220,200,0);
+	//log.lbStyle = BS_SOLID;
+	//HBRUSH mybrush = CreateBrushIndirect(&log);
+	//SelectObject (panelDc, mybrush);
+	//Rectangle (panelDc, 0,0,GetWidth(),GetHeight());
+	//TextOut (panelDc, 10, 10, "Ferhat",6);
+	//
+
+	//
+	//BitBlt (hdc, 0,0,GetWidth(), GetHeight(), panelDc, 0,0, SRCCOPY);
+	//
+	//ReleaseDC (GetHWnd(), panelDc);
+	//ReleaseDC (GetHWnd(), hdc);
+
+	DrawingProcedure();
+
+	if (_ElapsedTime >= 1.0f)
+	{
+		wostringstream stream;
+		stream << "FRAMECOUNT = " << _FrameCount << " Elapsed = " << _ElapsedTime;
+		_FpsString = stream.str();
+		_FrameCount = 0;
+		_ElapsedTime = 0;
+	}
+
+	SetTitle(_FpsString.c_str());
+}
+
+void PerformanceWindow::OnMouseMove( int x, int y )
+{
+	_MouseX = x;
+	_MouseY = y;
+}
+
+void PerformanceWindow::DrawingProcedure()
+{
+	static int verticalPos;
 	HDC hdc = _BackBuffer->GetDeviceContext();
+	
 	// CLEAN
+	LOGBRUSH log;
+	log.lbStyle = BS_SOLID;
+	log.lbColor = RGB (90,90,90);
+	HBRUSH yellowBrush = CreateBrushIndirect(&log);
+	auto oldBrush = (HBRUSH) SelectObject (hdc, yellowBrush);
 	Rectangle (hdc, 0,0,GetWidth(), GetHeight());
+	SelectObject (hdc, oldBrush);
 
 	// ENTITIES
 	int width = 40;
 	int height= 40;
 	int offset = verticalPos % 40;
-
 	for (int i=-1; i<40; i++)
 	{
 		for (int j=-1; j<20; j++)
 		{
 			auto oldPen = SelectObject(hdc, GetStockObject(WHITE_PEN));
+			//LOGBRUSH yellowLogBrush;
+			//yellowLogBrush.lbStyle = BS_SOLID;
+			//yellowLogBrush.lbColor= RGB (100, 100, 50);
+			//HBRUSH hbr = CreateBrushIndirect (&yellowLogBrush);
+			// auto oldBrush = SelectObject(hdc, hbr); 
 			auto oldBrush = SelectObject(hdc, GetStockObject(BLACK_BRUSH));
 
 			Rectangle (hdc, 
 				i*width + offset,
 				j*height + offset,
-				i*width + offset + width, 
-				j*height + offset + height);
-			
+				i*width + offset + width-10, 
+				j*height + offset + height-10);
+
 			SelectObject(hdc, oldPen);
 			SelectObject(hdc, oldBrush);
 		}
@@ -73,6 +130,30 @@ void PerformanceWindow::DrawScene( double deltaTime )
 	if (verticalPos <= GetHeight()) ++verticalPos;
 	else
 		verticalPos = 0;
+
+	// SPRITE
+	TextOut (hdc, 25, 10, "WEREWOLF", 8);
+	HBITMAP hWolf = LoadBitmap (GetHInstance(), MAKEINTRESOURCE (IDB_WWOLF01));
+	HBITMAP hWolf2 = LoadBitmap (GetHInstance(), MAKEINTRESOURCE (IDB_WWOLF02));
+	HBITMAP hWolf3 = LoadBitmap (GetHInstance(), MAKEINTRESOURCE (IDB_WWOLF03));
+	HDC pdc = CreateCompatibleDC(hdc);
+	
+	HGDIOBJ oldWolf;
+	
+	int animTime = verticalPos % 60;
+	if (animTime >= 0 && animTime <=10) oldWolf = SelectObject (pdc, hWolf);
+	if (animTime >= 10 && animTime <=20) oldWolf = SelectObject (pdc, hWolf2);
+	if (animTime >= 20 && animTime <=30) oldWolf = SelectObject (pdc, hWolf3);
+	if (animTime >= 30 && animTime <=40) oldWolf = SelectObject (pdc, hWolf3);
+	if (animTime >= 40 && animTime <=50) oldWolf = SelectObject (pdc, hWolf2);
+	if (animTime >= 50 && animTime <=60) oldWolf = SelectObject (pdc, hWolf);
+	
+	
+	BitBlt (hdc, 25,25, 100, 100, pdc, 0,0, SRCCOPY);
+	SelectObject(pdc, oldWolf);
+	ReleaseDC(GetHWnd(), pdc);
+	DeleteObject (hWolf);
+	DeleteDC (pdc);
 
 	// CURSOR
 	int range = 10;
@@ -95,22 +176,5 @@ void PerformanceWindow::DrawScene( double deltaTime )
 	Ellipse (hdc, _MouseX-4, _MouseY-4,_MouseX+4, _MouseY+4 );
 
 	_BackBuffer->Draw();
-
-	if (_ElapsedTime >= 1.0f)
-	{
-		wostringstream stream;
-		stream << "FRAMECOUNT = " << _FrameCount << " Elapsed = " << _ElapsedTime;
-		_FpsString = stream.str();
-		_FrameCount = 0;
-		_ElapsedTime = 0;
-	}
-
-	SetTitle(_FpsString.c_str());
-}
-
-void PerformanceWindow::OnMouseMove( int x, int y )
-{
-	_MouseX = x;
-	_MouseY = y;
 }
 

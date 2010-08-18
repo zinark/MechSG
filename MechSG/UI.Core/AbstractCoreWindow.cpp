@@ -107,7 +107,7 @@ void AbstractCoreWindow::SetMouseState (bool state)
 	ShowCursor(state);
 }
 
-void UI::Core::AbstractCoreWindow::ToFullScreen()
+void UI::Core::AbstractCoreWindow::ToBorderless()
 {
 	SetWindowLong (_HWnd, GWL_STYLE, WS_POPUP);
 }

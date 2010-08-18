@@ -9,13 +9,19 @@ BackBuffer::BackBuffer( HWND hWnd, int width, int height )
 
 	HDC hdc = GetDC (_HWnd);
 	_HDC = CreateCompatibleDC(hdc);
+	_Surface = CreateCompatibleBitmap(hdc, width, height);
+	_OldSurface = (HBITMAP) SelectObject (_HDC, _Surface);
 	ReleaseDC (_HWnd, hdc);
 
-	_Surface = CreateCompatibleBitmap(_HDC, width, height);
-	_OldSurface = (HBITMAP) SelectObject (_HDC, _Surface);
-	HBRUSH bgBrush = (HBRUSH) GetStockObject(WHITE_BRUSH);
-	HBRUSH oldBrush = (HBRUSH) SelectObject(_HDC, bgBrush);
+	LOGBRUSH log;
+	log.lbColor = RGB (90,40,50);
+	log.lbStyle = BS_SOLID;
+	HBRUSH mybrush = CreateBrushIndirect(&log);
+	
+	HBRUSH oldBrush = (HBRUSH) SelectObject(_HDC, mybrush);
 	Rectangle (_HDC, 0,0, _Width, _Height);
+	
+	
 	SelectObject (_HDC, oldBrush);
 }
 
