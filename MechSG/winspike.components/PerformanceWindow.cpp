@@ -19,7 +19,7 @@ PerformanceWindow::PerformanceWindow(const HINSTANCE& hInst, const int& showStyl
 	_FrameCount = 0;
 	_ElapsedTime = 0;
 	_FpsString = L"Init...";
-	SetMouseState(false);
+	SetMouseVisible(false);
 	_Fighter = new Sprite (GetHInstance(), IDB_F16, IDB_F16_MASK);
 	_Fighter->SetVectors (Vectoric (1,1,0), Vectoric(100,100,0));
 }
@@ -107,7 +107,7 @@ void PerformanceWindow::DrawingProcedure()
 	HDC bgDc = CreateCompatibleDC(hdc);
 	HBITMAP hBg = LoadBitmap (GetHInstance(), MAKEINTRESOURCE(IDB_BG));
 	SelectObject(bgDc, hBg);
-	BitBlt (hdc, 100, 100, 640,480, bgDc, 0,0, SRCCOPY);
+	BitBlt (hdc, 0, 0, 640,480, bgDc, 0,0, SRCCOPY);
 	ReleaseDC(GetHWnd(), bgDc);
 	DeleteObject (hBg);
 	DeleteDC(bgDc);

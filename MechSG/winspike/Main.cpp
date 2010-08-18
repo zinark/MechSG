@@ -42,7 +42,7 @@ public:
 		double deltaTime = (currentTime - lastTime);
 		_PerformanceWindow->DrawScene (deltaTime);
 		lastTime = currentTime;
-		Sleep (12);
+		Sleep (5);
 	}
 };
 
@@ -68,14 +68,18 @@ bool ChangeResolution(int width, int height, int bpp)
 		MessageBox (0, "Resolution error.", "Error", MB_OK);
 		return false;
 	}
+	return true;
 }
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
-	if (!ChangeResolution(800, 600, 32 )) return -1;
+	const int WINDOW_HEIGHT = 640;
+	const int WINDOW_WIDTH = 480;
+
+	//if (!ChangeResolution(WINDOW_HEIGHT, WINDOW_WIDTH , 32 )) return -1;
 
 	PerformanceWindow* performanceWindow = new PerformanceWindow (hInstance, showStyle);
-	performanceWindow->SetSize(800, 600);
+	performanceWindow->SetSize(WINDOW_HEIGHT, WINDOW_WIDTH );
 	
 	if (performanceWindow->Create())
 	{
@@ -83,6 +87,6 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int show
 		performanceWindow->Show();
 	}
 	SetCapture (performanceWindow->GetHWnd());
-	MoveWindow(performanceWindow->GetHWnd(), 0,0,800,600, true);
+	MoveWindow(performanceWindow->GetHWnd(), 0,0,WINDOW_HEIGHT, WINDOW_WIDTH, true);
 	Application ().Start(OnApplicationIdleAction (performanceWindow));
 }

@@ -16,7 +16,6 @@ AbstractCoreWindow::AbstractCoreWindow( const HINSTANCE& appInstanceHandle, cons
 	defaultBrush.lbStyle = BS_NULL;
 	_BackgroundBrush = defaultBrush;
 	
-	
 	_Width = 800;
 	_Height = 600;
 	_HInstance = appInstanceHandle;
@@ -102,7 +101,7 @@ void AbstractCoreWindow::SetMenu( const HMENU& menu )
 	_HMenu = menu;
 }
 
-void AbstractCoreWindow::SetMouseState (bool state)
+void AbstractCoreWindow::SetMouseVisible (bool state)
 {
 	ShowCursor(state);
 }
