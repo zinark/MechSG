@@ -42,7 +42,7 @@ public:
 		double deltaTime = (currentTime - lastTime);
 		_PerformanceWindow->DrawScene (deltaTime);
 		lastTime = currentTime;
-		Sleep (20);
+		Sleep (12);
 	}
 };
 
@@ -72,19 +72,17 @@ bool ChangeResolution(int width, int height, int bpp)
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
-	// if (!ChangeResolution(800, 600, 32 )) return -1;
+	if (!ChangeResolution(800, 600, 32 )) return -1;
 
 	PerformanceWindow* performanceWindow = new PerformanceWindow (hInstance, showStyle);
-	// performanceWindow->SetSize(800, 600);
+	performanceWindow->SetSize(800, 600);
 	
 	if (performanceWindow->Create())
 	{
 		performanceWindow->ToBorderless();
 		performanceWindow->Show();
-		
 	}
-	// SetCapture (performanceWindow->GetHWnd());
-	// MoveWindow(performanceWindow->GetHWnd(), 0,0,800,600, true);
-	
+	SetCapture (performanceWindow->GetHWnd());
+	MoveWindow(performanceWindow->GetHWnd(), 0,0,800,600, true);
 	Application ().Start(OnApplicationIdleAction (performanceWindow));
 }

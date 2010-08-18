@@ -60,5 +60,8 @@
     <None Include="..\..\..\..\2d circle graphic\bitmap1.bmp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\..\..\2D Circle Graphic\TEST7B.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -98,27 +98,36 @@ void PerformanceWindow::DrawingProcedure()
 	Rectangle (hdc, 0,0,GetWidth(), GetHeight());
 	SelectObject (hdc, oldBrush);
 
+	HDC bgDc = CreateCompatibleDC(hdc);
+	HBITMAP hBg = LoadBitmap (GetHInstance(), MAKEINTRESOURCE(IDB_BG));
+	SelectObject(bgDc, hBg);
+	BitBlt (hdc, 100, 100, 640,480, bgDc, 0,0, SRCCOPY);
+	ReleaseDC(GetHWnd(), bgDc);
+	DeleteObject (hBg);
+	DeleteDC(bgDc);
+
 	// ENTITIES
 	int width = 40;
 	int height= 40;
 	int offset = verticalPos % 40;
+	int space = 36;
 	for (int i=-1; i<40; i++)
 	{
 		for (int j=-1; j<20; j++)
 		{
-			auto oldPen = SelectObject(hdc, GetStockObject(WHITE_PEN));
+			auto oldPen = SelectObject(hdc, GetStockObject(BLACK_PEN));
 			//LOGBRUSH yellowLogBrush;
 			//yellowLogBrush.lbStyle = BS_SOLID;
 			//yellowLogBrush.lbColor= RGB (100, 100, 50);
 			//HBRUSH hbr = CreateBrushIndirect (&yellowLogBrush);
 			// auto oldBrush = SelectObject(hdc, hbr); 
-			auto oldBrush = SelectObject(hdc, GetStockObject(BLACK_BRUSH));
+			auto oldBrush = SelectObject(hdc, GetStockObject(WHITE_BRUSH));
 
-			Rectangle (hdc, 
-				i*width + offset,
-				j*height + offset,
-				i*width + offset + width-10, 
-				j*height + offset + height-10);
+			Ellipse (hdc, 
+				i*width + offset + space,
+				j*height + offset + space,
+				i*width + offset + width, 
+				j*height + offset + height);
 
 			SelectObject(hdc, oldPen);
 			SelectObject(hdc, oldBrush);
@@ -126,7 +135,7 @@ void PerformanceWindow::DrawingProcedure()
 	}
 
 	// PAD
-	Rectangle (hdc, 0, verticalPos, GetWidth (), verticalPos+10);
+	// Rectangle (hdc, 0, verticalPos, GetWidth (), verticalPos+10);
 	if (verticalPos <= GetHeight()) ++verticalPos;
 	else
 		verticalPos = 0;
@@ -139,7 +148,6 @@ void PerformanceWindow::DrawingProcedure()
 	HDC pdc = CreateCompatibleDC(hdc);
 	
 	HGDIOBJ oldWolf;
-	
 	int animTime = verticalPos % 60;
 	if (animTime >= 0 && animTime <=10) oldWolf = SelectObject (pdc, hWolf);
 	if (animTime >= 10 && animTime <=20) oldWolf = SelectObject (pdc, hWolf2);
@@ -149,10 +157,16 @@ void PerformanceWindow::DrawingProcedure()
 	if (animTime >= 50 && animTime <=60) oldWolf = SelectObject (pdc, hWolf);
 	
 	
-	BitBlt (hdc, 25,25, 100, 100, pdc, 0,0, SRCCOPY);
+	for (int i=0; i<6; i++)
+	{
+		BitBlt (hdc, 25 + i*100,25+i*100, 100, 100, pdc, 0,0, SRCCOPY);
+	}
+	
 	SelectObject(pdc, oldWolf);
 	ReleaseDC(GetHWnd(), pdc);
 	DeleteObject (hWolf);
+	DeleteObject (hWolf2);
+	DeleteObject (hWolf3);
 	DeleteDC (pdc);
 
 	// CURSOR

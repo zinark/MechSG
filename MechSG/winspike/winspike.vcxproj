@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\2d circle graphic\bitmap1.bmp" />
+    <None Include="..\..\..\..\2D Circle Graphic\TEST7B.bmp" />
     <None Include="..\..\..\..\2D Circle Graphic\Werewolf-01.bmp" />
     <None Include="..\..\..\..\2D Circle Graphic\Werewolf-02.bmp" />
     <None Include="..\..\..\..\2D Circle Graphic\Werewolf-03.bmp" />
