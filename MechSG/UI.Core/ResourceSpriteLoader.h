@@ -9,7 +9,8 @@ namespace UI { namespace Core {
 	private:
 		unsigned int _SpriteID;
 		HINSTANCE _HInstance;
-		
+		BITMAP _Bitmap;
+
 		int _Width;
 		int GetWidth() const { return _Width; }
 		
@@ -18,6 +19,7 @@ namespace UI { namespace Core {
 
 	public:
 		HBITMAP Load();
+		BITMAP& GetBitmap ();
 		ResourceSpriteLoader(HINSTANCE hInstance, unsigned int spriteID);
 		~ResourceSpriteLoader(void);
 	};

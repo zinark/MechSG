@@ -25,20 +25,24 @@ public:
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE TEMP, char* cmdLine, int showStyle)
 {
+	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS );
+	
 	Application application;
 	PongWindow window (hInstance, showStyle);
+	window.SetSize(800,600);
 	
-	
+	if (!application.SetResolution(800, 600, 32))
+	{
+		MessageBox (0, "Can not change resolution to 640X480.", "Error", MB_OK);
+	}
+
 	if (!window.Create()) 
 	{
 		MessageBox (0, "Can not create window.", "Error", MB_OK);
 		return -1;
 	}
 
-	//if (!application.SetResolution(800, 600, 32))
-	//{
-	//	MessageBox (0, "Can not change resolution to 800x600x32.", "Error", MB_OK);
-	//}
 	window.Show ();
-	application.Start(GameLoop(&window), 5);
+	SetCapture (window.GetHWnd());
+	application.Start(GameLoop(&window));
 }

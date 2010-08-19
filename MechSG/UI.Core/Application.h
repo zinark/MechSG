@@ -10,7 +10,8 @@ namespace UI { namespace Core
 	class Application
 	{
 	private:
-		int _FPS;
+		float _ExpectedFps;
+		int _Fps;
 		double lastTime;
 		int _FrameCount;
 		double _ElapsedTime;
@@ -24,6 +25,7 @@ namespace UI { namespace Core
 		void Start (ApplicationAction& action, int sleepTime);
 		void Start ();
 		bool SetResolution (int width, int height, int bpp);
-		int GetFPS () { return _FPS;}
+		int GetFPS () { return _Fps;}
+		void SetExpectedFps (int fps) { _ExpectedFps = fps; }
 	};
 }}

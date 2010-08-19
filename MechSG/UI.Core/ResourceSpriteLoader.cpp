@@ -9,10 +9,9 @@ ResourceSpriteLoader::~ResourceSpriteLoader(void)
 HBITMAP ResourceSpriteLoader::Load()
 {
 	HBITMAP hbitmap = LoadBitmap (_HInstance, MAKEINTRESOURCE (_SpriteID));
-	BITMAP bitmap;
-	GetObject (hbitmap, sizeof(BITMAP), &bitmap);
-	_Width = bitmap.bmWidth;
-	_Height = bitmap.bmHeight;
+	GetObject (hbitmap, sizeof(BITMAP), &_Bitmap);
+	_Width = _Bitmap.bmWidth;
+	_Height = _Bitmap.bmHeight;
 	return hbitmap;
 }
 
@@ -20,4 +19,9 @@ ResourceSpriteLoader::ResourceSpriteLoader( HINSTANCE hInstance, unsigned int sp
 {
 	_SpriteID = spriteID;
 	_HInstance = hInstance;
+}
+
+BITMAP& UI::Core::ResourceSpriteLoader::GetBitmap()
+{
+	return _Bitmap;
 }

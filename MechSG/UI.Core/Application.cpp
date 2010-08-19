@@ -5,7 +5,8 @@ using namespace UI::Core;
 
 Application::Application(void)
 {
-	_FPS = 0;
+	_Fps = 0;
+	_ExpectedFps = 60.0f;
 }
 
 
@@ -32,7 +33,7 @@ void UI::Core::Application::Start()
 void UI::Core::Application::Start( ApplicationAction& action, int sleepTime )
 {
 	action.SetOwnerApplication (this);
-	
+
 	MSG msg;
 	ZeroMemory (&msg, sizeof(msg));
 	while (msg.message != WM_QUIT && msg.message != WM_DESTROY)
@@ -45,18 +46,20 @@ void UI::Core::Application::Start( ApplicationAction& action, int sleepTime )
 		else
 		{
 			double currentTime = _Performance.GetTimeInSeconds();
-			double deltaTime = (currentTime - lastTime);
-			action (); 
+			double deltaTime = currentTime - lastTime;
 			lastTime = currentTime;
 
 			++_FrameCount;
 			_ElapsedTime += deltaTime;
-			if (_ElapsedTime >= 1.0f)
+
+			if (_ElapsedTime >= 1.0f / _ExpectedFps)
 			{
-				_FPS = _FrameCount;
+				_Fps = _FrameCount;
 				_FrameCount = 0;
 				_ElapsedTime = 0;
+				action ();
 			}
+
 			Sleep (sleepTime);
 		}
 	}

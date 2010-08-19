@@ -26,5 +26,9 @@ namespace UI { namespace Core {
 		void Draw(const HDC& target);
 		void Split (int width, int height);
 		void PickSubSprite (int x, int y);
+		Vector2D& GetLocation () { return _Location; }
+
+		int GetWidth() const { return _SubSpriteWidth;}
+		int GetHeight() const { return _SubSpriteHeight;}
 	};
 }}

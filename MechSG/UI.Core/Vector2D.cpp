@@ -23,6 +23,11 @@ Vector2D& UI::Core::Vector2D::operator*( float value )
 	return Vector2D (_X * value,_Y * value);
 }
 
+Vector2D& UI::Core::Vector2D::operator*( Vector2D& rhs )
+{
+	return Vector2D (_X * rhs.GetX(), _Y * rhs.GetY());
+}
+
 float UI::Core::Vector2D::GetX()
 {
 	return _X;

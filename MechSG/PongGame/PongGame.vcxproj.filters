@@ -24,6 +24,9 @@
     <ClCompile Include="MemoryStatus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PongLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PongWindow.h">
@@ -35,10 +38,27 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PongLogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PongGame.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\sprites\coin.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\sprites\coin_map.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\2D Circle Graphic\ball.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\2D Circle Graphic\ball_mask.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

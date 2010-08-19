@@ -10,6 +10,7 @@ namespace UI { namespace Core
 		Vector2D(float x, float y);
 		~Vector2D(void);
 		Vector2D& operator* (float value);
+		Vector2D& operator* (Vector2D& rhs);
 		Vector2D& operator+ (const Vector2D& rhs);
 		float GetX ();
 		float GetY ();

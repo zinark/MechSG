@@ -7,7 +7,7 @@ namespace UI { namespace Core
 
 	class DynamicSprite : public Sprite
 	{
-	private:
+	protected:
 		Vector2D _Velocity;
 
 	public:
@@ -15,6 +15,8 @@ namespace UI { namespace Core
 		void SetVelocity (const Vector2D& velocity);
 		void Update (float speed);
 		~DynamicSprite(void);
+
+		Vector2D& GetVelocity () { return _Velocity; }
 	};
 
 }}

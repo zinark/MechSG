@@ -39,5 +39,8 @@ double Performance::GetTimeInSeconds()
 
 float Performance::GetTime()
 {
-	return (float) timeGetTime ();
+	//INT64 time = 0;
+	//QueryPerformanceCounter((LARGE_INTEGER*) &time);
+	//return (double) GetTimeScale() * time * 1000;
+ 	return (float) timeGetTime ();
 }

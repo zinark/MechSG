@@ -64,6 +64,7 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="MemoryStatus.cpp" />
+    <ClCompile Include="PongLogic.cpp" />
     <ClCompile Include="PongWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -73,11 +74,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemoryStatus.h" />
+    <ClInclude Include="PongLogic.h" />
     <ClInclude Include="PongWindow.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PongGame.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\2D Circle Graphic\ball.bmp" />
+    <None Include="..\..\..\..\2D Circle Graphic\ball_mask.bmp" />
+    <None Include="..\sprites\coin.bmp" />
+    <None Include="..\sprites\coin_map.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

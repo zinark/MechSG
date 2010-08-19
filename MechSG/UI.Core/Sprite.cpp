@@ -10,7 +10,8 @@ Sprite::Sprite(unsigned int spriteId, unsigned int maskId)
 	_MaskLoader = new ResourceSpriteLoader (hInst, maskId);
 	_Sprite = _SpriteLoader->Load ();
 	_Mask = _MaskLoader->Load ();
-
+	
+	
 	_SubSpriteWidth = _SpriteLoader->GetWidth ();
 	_SubSpriteHeight = _SpriteLoader->GetHeight ();
 }

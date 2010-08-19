@@ -9,6 +9,7 @@ namespace UI { namespace Core {
 		virtual HBITMAP Load() = 0;
 		virtual int GetWidth() const = 0;
 		virtual int GetHeight() const = 0;
+		virtual BITMAP& GetBitmap () = 0;
 		~ISpriteLoader(void) {};
 	};
 }}
