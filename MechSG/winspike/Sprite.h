@@ -41,5 +41,6 @@ protected:
 	BITMAP _BitMask;
 	Vectoric _Velocity;
 	Vectoric _Position;
+	
 };
 

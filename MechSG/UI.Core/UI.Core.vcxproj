@@ -80,14 +80,24 @@
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="ApplicationAction.h" />
+    <ClInclude Include="DynamicSprite.h" />
+    <ClInclude Include="IDrawable.hpp" />
     <ClInclude Include="Performance.h" />
+    <ClInclude Include="ResourceSpriteLoader.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="ISpriteLoader.hpp" />
+    <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractCoreWindow.cpp" />
     <ClCompile Include="AbstractWindow.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ApplicationAction.cpp" />
+    <ClCompile Include="DynamicSprite.cpp" />
     <ClCompile Include="Performance.cpp" />
+    <ClCompile Include="ResourceSpriteLoader.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
